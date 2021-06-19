@@ -29,7 +29,6 @@ public class DataGenerator {
         entityManager.persist(customer);
         entityManager.persist(mechanic);
         entityManager.persist(service);
-//        Mechanic mechanic = new Mechanic("Gica", ServiceType.BUMPER_REPLACEMENT)
 
         transaction.commit();
     }
