@@ -1,5 +1,6 @@
 package com.mechanicservice.model;
 
+import jdk.jfr.Frequency;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -32,14 +33,19 @@ public class Car {
     private RepairedStatus repairedStatus;
 
 //    @Column(name = "required_service")
-    @OneToMany
-    private List<Service> requiredServices;
+    @Column(name = "required_services")
+    private ServiceType requiredServices;
 
 
-    public Car(String brandName, Mechanic assignedMechanic, Customer owner, List<Service> requiredServices) {
+    public Car(String brandName, Mechanic assignedMechanic, RepairedStatus repairedStatus, ServiceType requiredServices) {
         this.brandName = brandName;
         this.assignedMechanic = assignedMechanic;
-        this.owner = owner;
+        this.repairedStatus = repairedStatus;
+//        this.owner = owner;
         this.requiredServices = requiredServices;
+    }
+
+    public void addOwner(Customer owner) {
+        this.owner = owner;
     }
 }

@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity(name = "mechanic")
@@ -27,9 +28,13 @@ public class Mechanic {
     private List<Car> assignedCars;
 
 
-    public Mechanic(String name, ServiceType serviceType, List<Car> assignedCars) {
+    public Mechanic(String name, ServiceType serviceType) {
         this.name = name;
         this.specialization = serviceType;
-        this.assignedCars = assignedCars;
+        this.assignedCars = new ArrayList<>();
+    }
+
+    public void assignCar(Car car) {
+        assignedCars.add(car);
     }
 }

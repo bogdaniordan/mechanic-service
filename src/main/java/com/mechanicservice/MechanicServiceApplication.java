@@ -11,9 +11,8 @@ import javax.persistence.Persistence;
 @SpringBootApplication
 public class MechanicServiceApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(MechanicServiceApplication.class, args);
-
+	//modify later
+	private static void initializeDatabase() {
 		EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("my-persistence-unit");
 		EntityManager entityManager = entityManagerFactory.createEntityManager();
 		DataGenerator dataGenerator = new DataGenerator(entityManager);
@@ -21,6 +20,14 @@ public class MechanicServiceApplication {
 		entityManager.close();
 		entityManagerFactory.close();
 	}
+
+	public static void main(String[] args) {
+		SpringApplication.run(MechanicServiceApplication.class, args);
+		initializeDatabase();
+
+	}
+
+
 
 
 
