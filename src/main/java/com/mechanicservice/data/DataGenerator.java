@@ -25,9 +25,9 @@ public class DataGenerator {
         Service service = new Service(ServiceType.ENGINE_REPAIR, car, customer, mechanic, new Date());
         car.addOwner(customer);
         mechanic.assignCar(car);
+        entityManager.persist(mechanic);
         entityManager.persist(car);
         entityManager.persist(customer);
-        entityManager.persist(mechanic);
         entityManager.persist(service);
 
         transaction.commit();

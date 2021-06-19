@@ -17,7 +17,7 @@ public class Service {
     @Column(name = "id")
     private Long id;
 
-    @Enumerated
+    @Enumerated(EnumType.STRING)
     private ServiceType serviceType;
 
     @OneToOne

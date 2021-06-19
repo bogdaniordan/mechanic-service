@@ -1,12 +1,10 @@
 package com.mechanicservice.model;
 
-import jdk.jfr.Frequency;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.util.List;
 
 @Entity(name = "car")
 @Data
@@ -22,15 +20,16 @@ public class Car {
     private String brandName;
 
     @OneToOne
+    @JoinColumn(name = "id")
     private Mechanic assignedMechanic;
 
 //    @Column(name = "owner")
     @OneToOne
     private Customer owner;
 
-//    @Column(name = "repaired_status")
-    @Enumerated(EnumType.STRING)
-    private RepairedStatus repairedStatus;
+
+    @Enumerated
+    private RepairedStatus repairedstatus;
 
 //    @Column(name = "required_service")
     @Column(name = "required_services")
@@ -40,7 +39,7 @@ public class Car {
     public Car(String brandName, Mechanic assignedMechanic, RepairedStatus repairedStatus, ServiceType requiredServices) {
         this.brandName = brandName;
         this.assignedMechanic = assignedMechanic;
-        this.repairedStatus = repairedStatus;
+        this.repairedstatus = repairedStatus;
 //        this.owner = owner;
         this.requiredServices = requiredServices;
     }

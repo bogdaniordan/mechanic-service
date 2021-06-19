@@ -20,8 +20,8 @@ public class Customer {
     private String name;
 
     @OneToOne
+    @JoinColumn(name = "ownedcar_id")
     private Car ownedCar;
-
 
     public Customer(String name, Car ownedCar) {
         this.name = name;
