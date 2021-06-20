@@ -19,12 +19,16 @@ public class DataGenerator {
         EntityTransaction transaction = entityManager.getTransaction();
         transaction.begin();
         Mechanic mechanic =  new Mechanic("gip", ServiceType.ENGINE_REPAIR);
-        Car car = new Car("dacia", mechanic, RepairedStatus.BROKEN, ServiceType.ENGINE_REPAIR);
-        Customer customer = new Customer("gin",
-                car);
+        Car car = new Car("dacia", RepairedStatus.BROKEN, ServiceType.ENGINE_REPAIR);
+        car.assignMechanic(mechanic);
+        Customer customer = new Customer("gin");
+        customer.assignCar(car);
         Service service = new Service(ServiceType.ENGINE_REPAIR, car, customer, mechanic, new Date());
 //        car.addOwner(customer);
+        Credentials credentials = new Credentials("bogdan", "1234");
+        customer.assignCredentials(credentials);
         mechanic.assignCar(car);
+        entityManager.persist(credentials);
         entityManager.persist(mechanic);
         entityManager.persist(car);
         entityManager.persist(customer);

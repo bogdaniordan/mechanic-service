@@ -30,21 +30,27 @@ public class Car {
 //    private Customer owner;
 
 
-    @Enumerated
+    @Enumerated(EnumType.STRING)
     private RepairedStatus repairedstatus;
 
 //    @Column(name = "required_service")
-    @Column(name = "required_services")
-    private ServiceType requiredServices;
+//    @Column(name = "required_services")
+    @Enumerated(EnumType.STRING)
+    private ServiceType requiredservice;
 
 
-    public Car(String brandName, Mechanic assignedMechanic, RepairedStatus repairedStatus, ServiceType requiredServices) {
+    public Car(String brandName, RepairedStatus repairedStatus, ServiceType requiredServices) {
         this.brandName = brandName;
-        this.assignedMechanic = assignedMechanic;
+//        this.assignedMechanic = assignedMechanic;
         this.repairedstatus = repairedStatus;
 //        this.owner = owner;
-        this.requiredServices = requiredServices;
+        this.requiredservice = requiredServices;
     }
+
+    public void assignMechanic(Mechanic mechanic) {
+        this.assignedMechanic = mechanic;
+    }
+
 
 //    public void addOwner(Customer owner) {
 //        this.owner = owner;

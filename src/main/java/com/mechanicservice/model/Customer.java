@@ -24,8 +24,18 @@ public class Customer {
     @JoinColumn(name = "ownedcar_id")
     private Car ownedCar;
 
-    public Customer(String name, Car ownedCar) {
+    @OneToOne
+    private Credentials credentials;
+
+    public Customer(String name) {
         this.name = name;
+    }
+
+    public void assignCar(Car ownedCar) {
         this.ownedCar = ownedCar;
+    }
+
+    public void assignCredentials(Credentials credentials) {
+        this.credentials = credentials;
     }
 }
