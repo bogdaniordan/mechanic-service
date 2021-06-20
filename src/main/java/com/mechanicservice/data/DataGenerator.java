@@ -23,7 +23,7 @@ public class DataGenerator {
         Customer customer = new Customer("gin",
                 car);
         Service service = new Service(ServiceType.ENGINE_REPAIR, car, customer, mechanic, new Date());
-        car.addOwner(customer);
+//        car.addOwner(customer);
         mechanic.assignCar(car);
         entityManager.persist(mechanic);
         entityManager.persist(car);

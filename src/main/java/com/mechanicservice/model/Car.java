@@ -3,6 +3,7 @@ package com.mechanicservice.model;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import net.minidev.json.annotate.JsonIgnore;
 
 import javax.persistence.*;
 
@@ -23,9 +24,10 @@ public class Car {
     @JoinColumn(name = "id")
     private Mechanic assignedMechanic;
 
-//    @Column(name = "owner")
-    @OneToOne
-    private Customer owner;
+////    @Column(name = "owner")
+//    @OneToOne
+//    @JsonIgnore
+//    private Customer owner;
 
 
     @Enumerated
@@ -44,7 +46,7 @@ public class Car {
         this.requiredServices = requiredServices;
     }
 
-    public void addOwner(Customer owner) {
-        this.owner = owner;
-    }
+//    public void addOwner(Customer owner) {
+//        this.owner = owner;
+//    }
 }
