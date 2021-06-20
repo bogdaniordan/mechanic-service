@@ -2,15 +2,12 @@ package com.mechanicservice.restcontroller;
 
 
 import com.mechanicservice.model.Car;
-import com.mechanicservice.model.Customer;
 import com.mechanicservice.service.CarService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @RestController
 @Slf4j
@@ -36,7 +33,7 @@ public class CarController {
 
     @PutMapping
     public ResponseEntity<Car> updateCar(@RequestBody Car car) {
-        log.info("Updating customer with id: " + car.getId());
+        log.info("Updating car with id: " + car.getId());
         Car savedCar = carService.updateCar(car);
         return new ResponseEntity<>(savedCar, HttpStatus.OK);
     }

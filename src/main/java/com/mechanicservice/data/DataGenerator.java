@@ -27,7 +27,7 @@ public class DataGenerator {
 //        car.addOwner(customer);
         Credentials credentials = new Credentials("bogdan", "1234");
         customer.assignCredentials(credentials);
-        mechanic.assignCar(car);
+//        mechanic.assignCar(car);
         entityManager.persist(credentials);
         entityManager.persist(mechanic);
         entityManager.persist(car);
