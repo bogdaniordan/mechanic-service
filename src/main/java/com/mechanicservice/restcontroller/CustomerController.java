@@ -1,34 +1,21 @@
 package com.mechanicservice.restcontroller;
 
 
+import com.mechanicservice.model.Credentials;
 import com.mechanicservice.model.Customer;
-import com.mechanicservice.repository.CustomerRepository;
-import com.mechanicservice.repository.MechanicRepository;
 import com.mechanicservice.service.CustomerService;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.velocity.exception.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.hateoas.CollectionModel;
-import org.springframework.hateoas.EntityModel;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Arrays;
 import java.util.List;
-import java.util.Optional;
-import java.util.stream.Collectors;
-
-import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
-import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 
 @RestController
 @Slf4j
 @RequestMapping("/customers")
 public class CustomerController {
-
-//    @Autowired
-//    private CustomerRepository customerRepository;
 
     @Autowired
     private CustomerService customerService;
@@ -62,6 +49,19 @@ public class CustomerController {
         return new ResponseEntity<>(savedCustomer, HttpStatus.OK);
     }
 
+    @GetMapping("/credentials")
+    public ResponseEntity<List<Credentials>> getAllCredentials() {
+        log.info("Fetching all user credentials");
+        List<Credentials> credentials =  customerService.getAllCredentials();
+        return new ResponseEntity<>(credentials, HttpStatus.OK);
+    }
+
+    @PostMapping("/credentials")
+    public ResponseEntity<Credentials> saveCredentials(@RequestBody Credentials credentials) {
+        log.info("Saving new user credentials");
+        Credentials newCredentials = customerService.addCredentials(credentials);
+        return new ResponseEntity<>(newCredentials, HttpStatus.CREATED);
+    }
 
 //    @GetMapping("")
 //    CollectionModel<EntityModel<Customer>> getCustomers() {

@@ -3,7 +3,6 @@ package com.mechanicservice.model;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import net.minidev.json.annotate.JsonIgnore;
 
 import javax.persistence.*;
 
@@ -29,6 +28,8 @@ public class Car {
 //    @JsonIgnore
 //    private Customer owner;
 
+    @Enumerated(EnumType.STRING)
+    FuelType fuel;
 
     @Enumerated(EnumType.STRING)
     private RepairedStatus repairedstatus;
@@ -39,12 +40,13 @@ public class Car {
     private ServiceType requiredservice;
 
 
-    public Car(String brandName, RepairedStatus repairedStatus, ServiceType requiredServices) {
+    public Car(String brandName, RepairedStatus repairedStatus, ServiceType requiredServices, FuelType fuel) {
         this.brandName = brandName;
 //        this.assignedMechanic = assignedMechanic;
         this.repairedstatus = repairedStatus;
 //        this.owner = owner;
         this.requiredservice = requiredServices;
+        this.fuel = fuel;
     }
 
     public void assignMechanic(Mechanic mechanic) {

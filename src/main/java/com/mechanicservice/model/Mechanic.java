@@ -22,7 +22,7 @@ public class Mechanic {
     @Column(name = "name")
     private String name;
 
-    @Column(name = "specialization")
+    @Enumerated(EnumType.STRING)
     private ServiceType specialization;
 
 //    @OneToMany

@@ -39,4 +39,5 @@ public class MechanicController {
         log.info("Updating mechanic with id: " + mechanic.getId());
         Mechanic updatedMechanic = mechanicService.updateMechanic(mechanic);
         return new ResponseEntity<>(updatedMechanic, HttpStatus.OK);
+    }
 }

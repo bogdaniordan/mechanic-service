@@ -1,8 +1,10 @@
 package com.mechanicservice.service;
 
 import com.mechanicservice.model.Car;
+import com.mechanicservice.model.Credentials;
 import com.mechanicservice.model.Customer;
 import com.mechanicservice.repository.CarRepository;
+import com.mechanicservice.repository.CredentialsRepository;
 import com.mechanicservice.repository.CustomerRepository;
 import org.apache.velocity.exception.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +20,9 @@ public class CustomerService {
 
     @Autowired
     private CustomerRepository customerRepository;
+
+    @Autowired
+    private CredentialsRepository credentialsRepository;
 
     public List<Customer> getAllCustomers() {
         return customerRepository.findAll();
@@ -39,5 +44,12 @@ public class CustomerService {
         return customerRepository.save(customer);
     }
 
+    public List<Credentials> getAllCredentials() {
+        return credentialsRepository.findAll();
+    }
+
+    public Credentials addCredentials(Credentials credentials) {
+        return credentialsRepository.save(credentials);
+    }
 
 }
