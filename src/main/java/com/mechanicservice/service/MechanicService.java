@@ -7,6 +7,8 @@ import org.apache.velocity.exception.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class MechanicService {
 
@@ -15,6 +17,10 @@ public class MechanicService {
 
 //    @Autowired
 //    private CarRepository carRepository;
+
+    public List<Mechanic> getAllMechanics() {
+        return mechanicRepository.findAll();
+    }
 
     public Mechanic getMechanic(Long id) {
         return mechanicRepository.findById(id)

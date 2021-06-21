@@ -10,6 +10,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
+@CrossOrigin(origins = "http://localhost:3000")
 @RestController
 @Slf4j
 @RequestMapping("/mechanics")
@@ -18,6 +21,12 @@ public class MechanicController {
     @Autowired
     private MechanicService mechanicService;
 
+    @GetMapping
+    public ResponseEntity<List<Mechanic>> getAllMechanics() {
+        log.info("Fetching all mechanics.");
+        List<Mechanic> mechanics = mechanicService.getAllMechanics();
+        return new ResponseEntity<>(mechanics, HttpStatus.OK);
+    }
 
     @GetMapping("/{id}")
     public ResponseEntity<Mechanic> getMechanic(@PathVariable Long id) {
