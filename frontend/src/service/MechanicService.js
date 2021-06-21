@@ -1,15 +1,19 @@
 import axios from 'axios';
 
-const CARS_REST_API_URL = 'http://localhost:8080/mechanics';
+const MECHANIC_REST_API = 'http://localhost:8080/mechanics';
 
 class MechanicService {
 
     getMechanic(id) {
-        return axios.get(CARS_REST_API_URL + "/" + id);
+        return axios.get(MECHANIC_REST_API + "/" + id);
     }
 
     getAllMechanics() {
-        return axios.get(CARS_REST_API_URL);
+        return axios.get(MECHANIC_REST_API);
+    }
+
+    deleteMechanic(id) {
+        return axios.delete(MECHANIC_REST_API + "/" + id)
     }
 }
 
