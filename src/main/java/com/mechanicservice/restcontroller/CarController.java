@@ -9,6 +9,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+
+@CrossOrigin(origins = "http://localhost:3000")
 @RestController
 @Slf4j
 @RequestMapping("/cars")
@@ -36,5 +38,14 @@ public class CarController {
         log.info("Updating car with id: " + car.getId());
         Car savedCar = carService.updateCar(car);
         return new ResponseEntity<>(savedCar, HttpStatus.OK);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteCar(@PathVariable Long id)  {
+        Car car = carService.deleteById(id);
+        if (car == null) {
+            return ResponseEntity.noContent().build();
+        }
+        return ResponseEntity.notFound().build();
     }
 }

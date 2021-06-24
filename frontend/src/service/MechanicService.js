@@ -15,6 +15,10 @@ class MechanicService {
     deleteMechanic(id) {
         return axios.delete(MECHANIC_REST_API + "/" + id)
     }
+
+    createMechanic(mechanic) {
+        return axios.post(MECHANIC_REST_API, mechanic)
+    }
 }
 
 export default new MechanicService();

@@ -1,5 +1,6 @@
 package com.mechanicservice.service;
 
+import com.mechanicservice.model.Car;
 import com.mechanicservice.model.Mechanic;
 import com.mechanicservice.repository.CarRepository;
 import com.mechanicservice.repository.MechanicRepository;
@@ -14,9 +15,6 @@ public class MechanicService {
 
     @Autowired
     private MechanicRepository mechanicRepository;
-
-//    @Autowired
-//    private CarRepository carRepository;
 
     public List<Mechanic> getAllMechanics() {
         return mechanicRepository.findAll();
@@ -33,5 +31,14 @@ public class MechanicService {
 
     public Mechanic updateMechanic(Mechanic mechanic) {
         return mechanicRepository.save(mechanic);
+    }
+
+    public Mechanic deleteById(Long id) {
+        if (mechanicRepository.findById(id).isPresent()) {
+            Mechanic mechanic = mechanicRepository.findById(id).get();
+            mechanicRepository.delete(mechanic);
+            return mechanic;
+        }
+        return null;
     }
 }

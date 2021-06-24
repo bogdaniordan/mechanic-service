@@ -31,4 +31,13 @@ public class CarService {
     }
 
     public Car updateCar(Car car) { return carRepository.save(car);}
+
+    public Car deleteById(Long id) {
+        if (carRepository.findById(id).isPresent()) {
+            Car car = carRepository.findById(id).get();
+            carRepository.delete(car);
+            return car;
+        }
+        return null;
+    }
 }

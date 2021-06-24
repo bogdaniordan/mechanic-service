@@ -9,6 +9,7 @@ class MechanicComponent extends Component {
             message: null
         }
         this.refreshMechanics = this.refreshMechanics.bind(this)
+        this.addMechanic = this.addMechanic.bind(this);
     }
 
     refreshMechanics() {
@@ -28,11 +29,18 @@ class MechanicComponent extends Component {
         })
     }
 
+    addMechanic() {
+        this.props.history.push("/add-mechanic");
+    }
+
     render() {
         return (
             <div>
                 <div className="row">
                     <h4>Available mechanics</h4>
+                    <div className="row">
+                        <button className="btn btn-primary" onClick={this.addMechanic}>Add mechanic</button>
+                    </div>
                     <table className="table table-striped table-bordered">
                         <thead>
                         <tr>

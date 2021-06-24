@@ -29,7 +29,7 @@ public class Controller {
                 return new RedirectView("/homepage");
             }
         }
-        return new RedirectView("/");
+        return new RedirectView("");
     }
 
     @GetMapping("/homepage")

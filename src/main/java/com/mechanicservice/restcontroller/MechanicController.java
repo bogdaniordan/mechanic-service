@@ -1,5 +1,6 @@
 package com.mechanicservice.restcontroller;
 
+import com.mechanicservice.model.Car;
 import com.mechanicservice.model.Customer;
 import com.mechanicservice.model.Mechanic;
 import com.mechanicservice.repository.MechanicRepository;
@@ -48,5 +49,15 @@ public class MechanicController {
         log.info("Updating mechanic with id: " + mechanic.getId());
         Mechanic updatedMechanic = mechanicService.updateMechanic(mechanic);
         return new ResponseEntity<>(updatedMechanic, HttpStatus.OK);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteMechanic(@PathVariable Long id)  {
+        log.info("Trying to delete mechanic with id:"  + id);
+        Mechanic mechanic = mechanicService.deleteById(id);
+        if (mechanic == null) {
+            return ResponseEntity.noContent().build();
+        }
+        return ResponseEntity.notFound().build();
     }
 }
