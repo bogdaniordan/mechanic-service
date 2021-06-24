@@ -29,7 +29,11 @@ public class MechanicService {
         return mechanicRepository.save(mechanic);
     }
 
-    public Mechanic updateMechanic(Mechanic mechanic) {
+    public Mechanic updateMechanic(Mechanic mechanicDetails, Long id) {
+        Mechanic mechanic = mechanicRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Could not find mechanic with id: " + id));
+        mechanic.setName(mechanicDetails.getName());
+        mechanic.setSpecialization(mechanicDetails.getSpecialization());
         return mechanicRepository.save(mechanic);
     }
 

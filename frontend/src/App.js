@@ -3,6 +3,7 @@ import './App.css';
 import MechanicComponent from "./components/MechanicComponent"
 import {BrowserRouter as Router, Route, Switch}from 'react-router-dom'
 import CreateMechanicComponent from "./components/CreateMechanicComponent";
+import UpdateMechanicComponent from "./components/UpdateMechanicComponent";
 
 function App() {
   return (
@@ -12,6 +13,8 @@ function App() {
                 <Switch>
                     <Route path="/" exact component = {MechanicComponent}></Route>
                     <Route path="/add-mechanic" component = {CreateMechanicComponent}></Route>
+                    <Route path="/update-mechanic/:id" component = {UpdateMechanicComponent}></Route>
+
                 </Switch>
             </div>
         </Router>

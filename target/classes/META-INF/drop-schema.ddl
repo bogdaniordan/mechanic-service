@@ -1295,3 +1295,30 @@
     drop table if exists service cascade
 
     drop sequence if exists hibernate_sequence
+
+    alter table if exists customer 
+       drop constraint if exists FKmxm5tor4axxjlbhquh4hcu7qm
+
+    alter table if exists customer 
+       drop constraint if exists FKmfjfudsedybibx28cmjhxtb4
+
+    alter table if exists service 
+       drop constraint if exists FKnrrevpm4otovp3e6jvpmao4e1
+
+    alter table if exists service 
+       drop constraint if exists FKtyjijsa87ahcfvy495nhugo1
+
+    alter table if exists service 
+       drop constraint if exists FK8x8qehjum64psba3xtty9akt1
+
+    drop table if exists car cascade
+
+    drop table if exists credentials cascade
+
+    drop table if exists customer cascade
+
+    drop table if exists mechanic cascade
+
+    drop table if exists service cascade
+
+    drop sequence if exists hibernate_sequence

@@ -44,10 +44,11 @@ public class MechanicController {
         return new ResponseEntity<>(savedMechanic, HttpStatus.CREATED);
     }
 
-    @PutMapping
-    public ResponseEntity<Mechanic> updateMechanic(@RequestBody Mechanic mechanic) {
+    @PutMapping("/{id}")
+    public ResponseEntity<Mechanic> updateMechanic(@RequestBody Mechanic mechanic,
+                                                   @PathVariable Long id) {
         log.info("Updating mechanic with id: " + mechanic.getId());
-        Mechanic updatedMechanic = mechanicService.updateMechanic(mechanic);
+        Mechanic updatedMechanic = mechanicService.updateMechanic(mechanic, id);
         return new ResponseEntity<>(updatedMechanic, HttpStatus.OK);
     }
 

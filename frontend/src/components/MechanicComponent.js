@@ -10,6 +10,7 @@ class MechanicComponent extends Component {
         }
         this.refreshMechanics = this.refreshMechanics.bind(this)
         this.addMechanic = this.addMechanic.bind(this);
+        this.updateMechanic = this.addMechanic.bind(this);
     }
 
     refreshMechanics() {
@@ -26,6 +27,7 @@ class MechanicComponent extends Component {
         MechanicService.deleteMechanic(id).then((response) => {
             this.setState({message: `Delete of car ${id} successful`});
             this.refreshMechanics();
+            // this.props.history.push("/");
         })
     }
 
@@ -33,14 +35,15 @@ class MechanicComponent extends Component {
         this.props.history.push("/add-mechanic");
     }
 
+    updateMechanic(mechanicId) {
+        this.props.history.push(`/update-mechanic/${mechanicId}`);
+    }
+
     render() {
         return (
             <div>
                 <div className="row">
                     <h4>Available mechanics</h4>
-                    <div className="row">
-                        <button className="btn btn-primary" onClick={this.addMechanic}>Add mechanic</button>
-                    </div>
                     <table className="table table-striped table-bordered">
                         <thead>
                         <tr>
@@ -58,12 +61,15 @@ class MechanicComponent extends Component {
                                     <td>{mechanic.id}</td>
                                     <td>{mechanic.name}</td>
                                     <td>{mechanic.specialization}</td>
-                                    <td><button onClick={()=> this.deleteMechanic(mechanic.id)}>Delete</button></td>
+                                    <td><button className="btn btn-danger" onClick={()=> this.deleteMechanic(mechanic.id)}>Delete</button></td>
+                                    <td><button className="btn btn-info" onClick={() => this.props.history.push(`/update-mechanic/${mechanic.id}`)}>Update</button></td>
                                 </tr>
                         )
                     }
                     </tbody>
                 </div>
+                <br/>
+                <button className="btn btn-primary" onClick={this.addMechanic}>Add mechanic</button>
             </div>
         );
     }
