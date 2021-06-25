@@ -10,7 +10,7 @@ class MechanicComponent extends Component {
         }
         this.refreshMechanics = this.refreshMechanics.bind(this)
         this.addMechanic = this.addMechanic.bind(this);
-        this.updateMechanic = this.addMechanic.bind(this);
+        // this.updateMechanic = this.addMechanic.bind(this);
     }
 
     refreshMechanics() {
@@ -35,9 +35,9 @@ class MechanicComponent extends Component {
         this.props.history.push("/add-mechanic");
     }
 
-    updateMechanic(mechanicId) {
-        this.props.history.push(`/update-mechanic/${mechanicId}`);
-    }
+    // updateMechanic(mechanicId) {
+    //     this.props.history.push(`/update-mechanic/${mechanicId}`);
+    // }
 
     render() {
         return (

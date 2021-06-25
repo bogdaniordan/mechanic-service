@@ -19,6 +19,10 @@ class MechanicService {
     createMechanic(mechanic) {
         return axios.post(MECHANIC_REST_API, mechanic)
     }
+
+    updateMechanic(mechanic, id) {
+        return axios.put(MECHANIC_REST_API + "/" + id, mechanic)
+    }
 }
 
 export default new MechanicService();
