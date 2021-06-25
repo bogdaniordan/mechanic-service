@@ -5,7 +5,7 @@ class MechanicComponent extends Component {
         super(props)
         // this.refreshCourses = this.refreshCourses.bind(this)
         this.state = {
-            cars: [ ],
+            mechanics: [ ],
             message: null
         }
         this.refreshMechanics = this.refreshMechanics.bind(this)
@@ -15,7 +15,7 @@ class MechanicComponent extends Component {
 
     refreshMechanics() {
         MechanicService.getAllMechanics().then((response) => {
-            this.setState({ cars: response.data })
+            this.setState({ mechanics: response.data })
         });
     }
 
@@ -25,9 +25,10 @@ class MechanicComponent extends Component {
 
     deleteMechanic(id) {
         MechanicService.deleteMechanic(id).then((response) => {
-            this.setState({message: `Delete of car ${id} successful`});
+            this.setState({message: `Delete of mechanic ${id} successful`});
+            // this.setState({mechanics: this.state.mechanics.filter(mechanic => mechanic.id !== id)})
+            alert(this.state.message)
             this.refreshMechanics();
-            // this.props.history.push("/");
         })
     }
 
@@ -50,23 +51,27 @@ class MechanicComponent extends Component {
                             <td>ID</td>
                             <td>Name</td>
                             <td>Specialization</td>
+                            <td>Actions</td>
                         </tr>
                         </thead>
-                    </table>
-                    <tbody>
+                        <tbody>
                     {
-                        this.state.cars.map(
+                        this.state.mechanics.map(
                             mechanic =>
                                 <tr key={mechanic.id}>
                                     <td>{mechanic.id}</td>
                                     <td>{mechanic.name}</td>
                                     <td>{mechanic.specialization}</td>
-                                    <td><button className="btn btn-danger" onClick={()=> this.deleteMechanic(mechanic.id)}>Delete</button></td>
-                                    <td><button className="btn btn-info" onClick={() => this.props.history.push(`/update-mechanic/${mechanic.id}`)}>Update</button></td>
+                                    <td>
+                                        <button className="btn btn-danger" onClick={()=> this.deleteMechanic(mechanic.id)}>Delete</button>
+                                        <button className="btn btn-info" onClick={() => this.props.history.push(`/update-mechanic/${mechanic.id}`)}>Update</button>
+                                    </td>
                                 </tr>
                         )
                     }
-                    </tbody>
+                        </tbody>
+
+                    </table>
                 </div>
                 <br/>
                 <button className="btn btn-primary" onClick={this.addMechanic}>Add mechanic</button>
