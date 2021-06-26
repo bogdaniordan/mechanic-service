@@ -18,7 +18,7 @@ public class Service {
     private Long id;
 
     @Enumerated(EnumType.STRING)
-    private ServiceType serviceType;
+    private ServiceType servicetype;
 
     @OneToOne
     private Car car;
@@ -34,7 +34,7 @@ public class Service {
 
 
     public Service(ServiceType serviceType, Car car, Customer customer, Mechanic mechanic, Date date) {
-        this.serviceType = serviceType;
+        this.servicetype = serviceType;
         this.car = car;
         this.customer = customer;
         this.mechanic = mechanic;
