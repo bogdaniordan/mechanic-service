@@ -8,9 +8,9 @@ class CarService {
         return axios.get(CARS_REST_API_URL + "/" + id);
     }
 
-    // getAllMechanics() {
-    //     return axios.get(CARS_REST_API_URL);
-    // }
+    createCarAndAssignIt(id, car) {
+        return axios.post(CARS_REST_API_URL + "/" + id, car);
+    }
 }
 
 export default new CarService();

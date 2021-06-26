@@ -11,9 +11,8 @@ class UpdateMechanicComponent extends Component {
             specialization: ""
         }
         this.fetchMechanic(this.state.id);
-
-
     }
+
     updateMechanic = (e) => {
         e.preventDefault();
         const mechanic = {

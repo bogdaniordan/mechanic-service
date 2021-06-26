@@ -1,0 +1,52 @@
+import React, {Component} from 'react';
+import MechanicService from "../service/MechanicService";
+
+class MechanicProfile extends Component {
+    constructor(props) {
+        super(props)
+
+        this.state = {
+            id: this.props.match.params.id,
+            mechanic: {}
+        }
+        // this.createCar = this.createCar.bind(this);
+    }
+
+    componentDidMount(){
+        MechanicService.getMechanic(this.state.id).then( res => {
+            this.setState({mechanic: res.data});
+        })
+    }
+
+    // createCar(id) {
+    //     this.props.history.push(`/add-car/${id}`)
+    // }
+
+    render() {
+        return (
+            <div>
+                <br></br>
+                <div className = "card col-md-6 offset-md-3">
+                    <h3 className = "text-center"> View Mechanic Details</h3>
+                    <div className = "card-body">
+                        <div className = "row">
+                            <label> Mechanic ID: </label>
+                            <div> { this.state.mechanic.id }</div>
+                        </div>
+                        <div className = "row">
+                            <label> Name: </label>
+                            <div> { this.state.mechanic.name }</div>
+                        </div>
+                        <div className = "row">
+                            <label> Specialization: </label>
+                            <div> { this.state.mechanic.specialization }</div>
+                        </div>
+                    </div>
+                    <button className="btn btn-success" onClick={() => {  this.props.history.push(`/add-car/${this.state.id}`) }}>Create car</button>
+                </div>
+            </div>
+        );
+    }
+}
+
+export default MechanicProfile;

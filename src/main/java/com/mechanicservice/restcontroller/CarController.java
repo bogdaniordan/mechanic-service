@@ -27,8 +27,8 @@ public class CarController {
     }
 
     @PostMapping("/{mechanic-id}")
-    public ResponseEntity<Car> addCar(@RequestBody Car car, @PathVariable("mechanic-id") Long mechanicId) {
-        log.info("Adding car with id: " + car.getId());
+    public ResponseEntity<Car> addCarAndAssignIt(@RequestBody Car car, @PathVariable("mechanic-id") Long mechanicId) {
+        log.info("Adding a new car to the db.");
         Car savedCar = carService.saveCar(car, mechanicId);
         return new ResponseEntity<>(savedCar, HttpStatus.CREATED);
     }

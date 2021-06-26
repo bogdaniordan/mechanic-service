@@ -3,13 +3,13 @@ import MechanicService from "../service/MechanicService";
 class MechanicComponent extends Component {
     constructor(props) {
         super(props)
-        // this.refreshCourses = this.refreshCourses.bind(this)
         this.state = {
             mechanics: [ ],
             message: null
         }
         this.refreshMechanics = this.refreshMechanics.bind(this)
         this.addMechanic = this.addMechanic.bind(this);
+        this.viewMechanic = this.viewMechanic.bind(this);
         // this.updateMechanic = this.addMechanic.bind(this);
     }
 
@@ -34,6 +34,10 @@ class MechanicComponent extends Component {
 
     addMechanic() {
         this.props.history.push("/add-mechanic");
+    }
+
+    viewMechanic(id) {
+        this.props.history.push(`/mechanic/${id}`);
     }
 
     // updateMechanic(mechanicId) {
@@ -65,6 +69,7 @@ class MechanicComponent extends Component {
                                     <td>
                                         <button className="btn btn-danger" onClick={()=> this.deleteMechanic(mechanic.id)}>Delete</button>
                                         <button className="btn btn-info" onClick={() => this.props.history.push(`/update-mechanic/${mechanic.id}`)}>Update</button>
+                                        <button className="btn btn-primary" onClick={() => this.viewMechanic(mechanic.id)}>View</button>
                                     </td>
                                 </tr>
                         )
