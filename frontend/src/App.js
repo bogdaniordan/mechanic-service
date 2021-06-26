@@ -1,11 +1,13 @@
 import logo from './logo.svg';
 import './App.css';
-import MechanicComponent from "./components/MechanicComponent"
+import MechanicComponent from "./components/mechanic/MechanicComponent"
 import {BrowserRouter as Router, Route, Switch}from 'react-router-dom'
-import CreateMechanicComponent from "./components/CreateMechanicComponent";
-import UpdateMechanicComponent from "./components/UpdateMechanicComponent";
-import MechanicProfile from "./components/MechanicProfile";
-import CreateCarComponent from "./components/CreateCarComponent";
+import CreateMechanicComponent from "./components/mechanic/CreateMechanicComponent";
+import UpdateMechanicComponent from "./components/mechanic/UpdateMechanicComponent";
+import MechanicProfile from "./components/mechanic/MechanicProfile";
+import CreateCarComponent from "./components/car/CreateCarComponent";
+import ListCarsComponent from "./components/car/ListCarsComponent";
+import React from "react";
 
 function App() {
   return (

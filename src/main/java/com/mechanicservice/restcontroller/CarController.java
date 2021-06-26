@@ -9,6 +9,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 
 @CrossOrigin(origins = "http://localhost:3000")
 @RestController
@@ -24,6 +26,13 @@ public class CarController {
         log.info("Fetching car with id: " + id);
         Car car = carService.getCar(id);
         return new ResponseEntity<>(car, HttpStatus.OK);
+    }
+
+    @GetMapping
+    public ResponseEntity<List<Car>> getAllCars() {
+        log.info("Fetching all the cars in the db.");
+        List<Car> cars = carService.getAllCars();
+        return new ResponseEntity<>(cars, HttpStatus.OK);
     }
 
     @PostMapping("/{mechanic-id}")
@@ -48,4 +57,5 @@ public class CarController {
         }
         return ResponseEntity.notFound().build();
     }
+
 }

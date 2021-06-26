@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
-import MechanicService from "../service/MechanicService";
-import CarService from "../service/CarService";
+import MechanicService from "../../service/MechanicService";
+import CarService from "../../service/CarService";
+import ListCarsComponent from "./ListCarsComponent";
 
 class CreateCarComponent extends Component {
     constructor(props) {
@@ -26,8 +27,6 @@ class CreateCarComponent extends Component {
             repairedstatus: "BROKEN",
             requiredservice: this.state.requiredService
         }
-        console.log(this.state.mechanicId)
-        console.log(car);
         CarService.createCarAndAssignIt(this.state.mechanicId, car).then(response => {
             this.cancel();
         });
