@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import MechanicService from "../../service/MechanicService";
 import ListCarsComponent from "../car/ListCarsComponent";
+import ServiceComponent from "../car-service/ServiceComponent";
 
 class MechanicProfile extends Component {
     constructor(props) {
@@ -46,6 +47,7 @@ class MechanicProfile extends Component {
                     <button className="btn btn-success" onClick={() => {  this.props.history.push(`/add-car/${this.state.id}`) }}>Create car</button>
                 </div>
                 <ListCarsComponent/>
+                <ServiceComponent mechanicId = {this.state.id}/>
             </div>
         );
     }

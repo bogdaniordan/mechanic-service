@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const CAR_SERVICE_API_URL = "http://localhost:8080/services
+const CAR_SERVICE_API_URL = "http://localhost:8080/services";
 
 
 class CarServiceService {
