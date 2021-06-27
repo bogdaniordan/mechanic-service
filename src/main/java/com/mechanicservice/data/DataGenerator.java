@@ -26,7 +26,9 @@ public class DataGenerator {
         car.assignMechanic(mechanic);
         Customer customer = new Customer("gin");
         customer.assignCar(car);
-        Service service = new Service(ServiceType.ENGINE_REPAIR, car, customer, mechanic, new Date());
+        Service service = new Service(ServiceType.ENGINE_REPAIR, new Date());
+        service.assignCar(car);
+        service.assignMechanic(mechanic);
         Credentials credentials = new Credentials("bogdan", "1234");
         customer.assignCredentials(credentials);
 //        car.assignMechanic(mechanic);

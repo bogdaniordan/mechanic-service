@@ -9,6 +9,14 @@ class CarServiceService {
         return axios.get(CAR_SERVICE_API_URL + "/" + id);
     }
 
+    createNewService(mechanicId, carId, service) {
+        return axios.post(CAR_SERVICE_API_URL + "/mechanic/" + mechanicId + "/car/" + carId, service)
+    }
+
+    getAllServices() {
+        return axios.get(CAR_SERVICE_API_URL);
+    }
+
 }
 
 

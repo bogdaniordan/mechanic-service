@@ -48,6 +48,7 @@ class MechanicComponent extends Component {
     render() {
         return (
             <div>
+
                 <div className="row">
                     <h4>Available mechanics</h4>
                     <table className="table table-striped table-bordered">

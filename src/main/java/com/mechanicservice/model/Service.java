@@ -23,8 +23,8 @@ public class Service {
     @OneToOne
     private Car car;
 
-    @OneToOne
-    private Customer customer;
+//    @OneToOne
+//    private Customer customer;
 
     @OneToOne
     private Mechanic mechanic;
@@ -33,11 +33,23 @@ public class Service {
     private Date date;
 
 
-    public Service(ServiceType serviceType, Car car, Customer customer, Mechanic mechanic, Date date) {
+    public Service(ServiceType serviceType, Date date) {
         this.servicetype = serviceType;
-        this.car = car;
-        this.customer = customer;
-        this.mechanic = mechanic;
+//        this.car = car;
+//        this.customer = customer;
+//        this.mechanic = mechanic;
         this.date = date;
+    }
+
+    public void assignCar(Car car) {
+        this.car = car;
+    }
+
+//    public void assignCustomer(Customer customer) {
+//        this.customer = customer
+//    }
+
+    public void assignMechanic(Mechanic mechanic) {
+        this.mechanic = mechanic;
     }
 }
