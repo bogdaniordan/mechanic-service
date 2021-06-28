@@ -25,6 +25,9 @@ public class Mechanic {
     @Enumerated(EnumType.STRING)
     private ServiceType specialization;
 
+    @Column(name = "picture")
+    private String picture;
+
 //    @OneToMany
 //    private List<Car> assignedCars;
 
@@ -33,6 +36,10 @@ public class Mechanic {
         this.name = name;
         this.specialization = serviceType;
 //        this.assignedCars = new ArrayList<>();
+    }
+
+    public void addPicture(String picture) {
+        this.picture = picture;
     }
 
 //    public void assignCar(Car car) {

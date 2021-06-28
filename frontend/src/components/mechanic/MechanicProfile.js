@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import MechanicService from "../../service/MechanicService";
 import ListCarsComponent from "../car/ListCarsComponent";
 import ServiceComponent from "../car-service/ServiceComponent";
+import logo from "../resources/sergei.jpg"
 
 class MechanicProfile extends Component {
     constructor(props) {
@@ -30,7 +31,8 @@ class MechanicProfile extends Component {
                 <br></br>
                 <div className = "card col-md-6 offset-md-3">
                     <h3 className = "text-center"> View Mechanic Details</h3>
-                    <div className = "card-body">
+                    {/*<img src={this.state.mechanic.picture}/>*/}
+                            <div className = "card-body">
                         <div className = "row">
                             <label> Mechanic ID: </label>
                             <div> { this.state.mechanic.id }</div>
@@ -44,9 +46,9 @@ class MechanicProfile extends Component {
                             <div> { this.state.mechanic.specialization }</div>
                         </div>
                     </div>
-                    <button className="btn btn-success" onClick={() => {  this.props.history.push(`/add-car/${this.state.id}`) }}>Create car</button>
+                    <button className="btn btn-success" onClick={() => {this.props.history.push(`/add-car/${this.state.id}`) }}>Create car</button>
                 </div>
-                <ListCarsComponent mechanicId = {this.state.id}/>
+                <ListCarsComponent mechanicId = {this.state.id} specialization = {this.state.mechanic.specialization}/>
                 <ServiceComponent mechanicId = {this.state.id}/>
             </div>
         );

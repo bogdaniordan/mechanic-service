@@ -28,6 +28,7 @@ public class DataGenerator {
         customer.assignCar(car);
         Service service = new Service(ServiceType.ENGINE_REPAIR, new Date());
         service.assignCar(car);
+        mechanic.addPicture("frontend/src/components/resources/sergei.jpg");
         service.assignMechanic(mechanic);
         Credentials credentials = new Credentials("bogdan", "1234");
         customer.assignCredentials(credentials);

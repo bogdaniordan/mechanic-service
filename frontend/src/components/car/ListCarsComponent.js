@@ -22,7 +22,7 @@ class ListCarsComponent extends Component {
             date: new Date().getDate(),
             servicetype: serviceType
         }
-        console.log(service)
+        console.log(service);
         CarServiceService.createNewService(this.props.mechanicId, carId, service).then(r => {
 
         })
@@ -66,7 +66,6 @@ class ListCarsComponent extends Component {
                             )
                         }
                         </tbody>
-
                     </table>
                 </div>
             </div>

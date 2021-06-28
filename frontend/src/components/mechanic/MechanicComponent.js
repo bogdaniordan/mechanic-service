@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import MechanicService from "../../service/MechanicService";
-import ListCarsComponent from "../car/ListCarsComponent";
+
 class MechanicComponent extends Component {
     constructor(props) {
         super(props)
@@ -11,7 +11,6 @@ class MechanicComponent extends Component {
         this.refreshMechanics = this.refreshMechanics.bind(this)
         this.addMechanic = this.addMechanic.bind(this);
         this.viewMechanic = this.viewMechanic.bind(this);
-        // this.updateMechanic = this.addMechanic.bind(this);
     }
 
     refreshMechanics() {
@@ -77,7 +76,6 @@ class MechanicComponent extends Component {
                         )
                     }
                         </tbody>
-
                     </table>
                 </div>
                 <br/>
