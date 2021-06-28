@@ -49,6 +49,13 @@ public class CarController {
         return new ResponseEntity<>(savedCar, HttpStatus.OK);
     }
 
+    @PutMapping("/update-status/{id}")
+    public ResponseEntity<Car> updateCarRepairedStatus(@PathVariable Long id) {
+        log.info("Updating repair status of car with id: " + id);
+        Car updatedCar = carService.updateCarRepairStatus(id);
+        return new ResponseEntity<>(updatedCar, HttpStatus.OK);
+    }
+
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteCar(@PathVariable Long id)  {
         Car car = carService.deleteById(id);

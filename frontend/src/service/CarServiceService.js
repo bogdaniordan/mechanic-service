@@ -17,6 +17,10 @@ class CarServiceService {
         return axios.get(CAR_SERVICE_API_URL);
     }
 
+    getServicesByMechanicId(id) {
+        return axios.get(CAR_SERVICE_API_URL + "/services-by-mechanic-id/" + id);
+    }
+
 }
 
 

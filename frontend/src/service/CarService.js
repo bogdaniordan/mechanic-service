@@ -15,6 +15,10 @@ class CarService {
     createCarAndAssignIt(id, car) {
         return axios.post(CARS_REST_API_URL + "/" + id, car);
     }
+
+    updateCarStatus(id) {
+        return axios.put(CARS_REST_API_URL + "/update-status/" + id);
+    }
 }
 
 export default new CarService();

@@ -8,6 +8,7 @@ class ListCarsComponent extends Component {
         this.state = {
             cars: []
         }
+        this.repairCar = this.repairCar.bind(this);
     }
 
     componentDidMount() {
@@ -24,6 +25,13 @@ class ListCarsComponent extends Component {
         console.log(service)
         CarServiceService.createNewService(this.props.mechanicId, carId, service).then(r => {
 
+        })
+        this.updateCarRepairStatus(carId)
+    }
+
+    updateCarRepairStatus(id) {
+        CarService.updateCarStatus(id).then(response => {
+            window.location.reload();
         })
     }
 
@@ -53,7 +61,7 @@ class ListCarsComponent extends Component {
                                         <td>{car.fuel}</td>
                                         <td>{car.repairedstatus}</td>
                                         <td>{car.requiredservice}</td>
-                                        {/*<td>{car.repairedstatus === "BROKEN" ? <button className="btn-dark" onClick={this.repairCar(car.id, car.requiredservice)}>REPAIR</button> : ""}</td>*/}
+                                        <td>{car.repairedstatus === "BROKEN" ? <button className="btn-dark" onClick={() => this.repairCar(car.id, car.requiredservice)}>REPAIR</button> : <strong>REPAIRED</strong>}</td>
                                     </tr>
                             )
                         }

@@ -3,6 +3,7 @@ package com.mechanicservice.service;
 import com.mechanicservice.model.Car;
 import com.mechanicservice.model.Customer;
 import com.mechanicservice.model.Mechanic;
+import com.mechanicservice.model.RepairedStatus;
 import com.mechanicservice.repository.CarRepository;
 import com.mechanicservice.repository.MechanicRepository;
 import org.apache.velocity.exception.ResourceNotFoundException;
@@ -46,5 +47,12 @@ public class CarService {
             return car;
         }
         return null;
+    }
+
+    public Car updateCarRepairStatus(Long id) {
+        Car car = carRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Could not find car with id: " + id));
+        car.setRepairedstatus(RepairedStatus.REPAIRED);
+        return carRepository.save(car);
     }
 }
