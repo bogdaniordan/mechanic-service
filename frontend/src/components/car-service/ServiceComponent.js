@@ -11,7 +11,7 @@ class ServiceComponent extends Component {
 
     componentDidMount() {
         CarServiceService.getServicesByMechanicId(this.props.mechanicId).then(response => {
-            this.setState({services: response.data})
+            this.setState({services: response.data});
         })
     }
     // componentDidMount() {

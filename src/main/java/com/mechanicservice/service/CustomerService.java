@@ -1,7 +1,7 @@
 package com.mechanicservice.service;
 
 import com.mechanicservice.model.Car;
-import com.mechanicservice.model.Credentials;
+import com.mechanicservice.model.User;
 import com.mechanicservice.model.Customer;
 import com.mechanicservice.repository.CarRepository;
 import com.mechanicservice.repository.CredentialsRepository;
@@ -44,12 +44,12 @@ public class CustomerService {
         return customerRepository.save(customer);
     }
 
-    public List<Credentials> getAllCredentials() {
+    public List<User> getAllCredentials() {
         return credentialsRepository.findAll();
     }
 
-    public Credentials addCredentials(Credentials credentials) {
-        return credentialsRepository.save(credentials);
+    public User addCredentials(User user) {
+        return credentialsRepository.save(user);
     }
 
 }

@@ -3,7 +3,6 @@ package com.mechanicservice.model;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import net.minidev.json.annotate.JsonIgnore;
 
 import javax.persistence.*;
 
@@ -25,7 +24,7 @@ public class Customer {
     private Car ownedCar;
 
     @OneToOne
-    private Credentials credentials;
+    private User user;
 
     public Customer(String name) {
         this.name = name;
@@ -35,7 +34,7 @@ public class Customer {
         this.ownedCar = ownedCar;
     }
 
-    public void assignCredentials(Credentials credentials) {
-        this.credentials = credentials;
+    public void assignCredentials(User user) {
+        this.user = user;
     }
 }

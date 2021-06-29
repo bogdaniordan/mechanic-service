@@ -1,7 +1,7 @@
 package com.mechanicservice.restcontroller;
 
 
-import com.mechanicservice.model.Credentials;
+import com.mechanicservice.model.User;
 import com.mechanicservice.model.Customer;
 import com.mechanicservice.service.CustomerService;
 import lombok.extern.slf4j.Slf4j;
@@ -50,17 +50,17 @@ public class CustomerController {
     }
 
     @GetMapping("/credentials")
-    public ResponseEntity<List<Credentials>> getAllCredentials() {
+    public ResponseEntity<List<User>> getAllCredentials() {
         log.info("Fetching all user credentials");
-        List<Credentials> credentials =  customerService.getAllCredentials();
+        List<User> credentials =  customerService.getAllCredentials();
         return new ResponseEntity<>(credentials, HttpStatus.OK);
     }
 
     @PostMapping("/credentials")
-    public ResponseEntity<Credentials> saveCredentials(@RequestBody Credentials credentials) {
+    public ResponseEntity<User> saveCredentials(@RequestBody User user) {
         log.info("Saving new user credentials");
-        Credentials newCredentials = customerService.addCredentials(credentials);
-        return new ResponseEntity<>(newCredentials, HttpStatus.CREATED);
+        User newUser = customerService.addCredentials(user);
+        return new ResponseEntity<>(newUser, HttpStatus.CREATED);
     }
 
 //    @GetMapping("")

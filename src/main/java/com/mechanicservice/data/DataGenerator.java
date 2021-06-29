@@ -4,7 +4,6 @@ import com.mechanicservice.model.*;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
-import java.util.Arrays;
 import java.util.Date;
 
 public class DataGenerator {
@@ -30,12 +29,12 @@ public class DataGenerator {
         service.assignCar(car);
         mechanic.addPicture("frontend/src/components/resources/sergei.jpg");
         service.assignMechanic(mechanic);
-        Credentials credentials = new Credentials("bogdan", "1234");
-        customer.assignCredentials(credentials);
+        User user = new User("bogdan", "1234");
+        customer.assignCredentials(user);
 //        car.assignMechanic(mechanic);
 
 
-        entityManager.persist(credentials);
+        entityManager.persist(user);
         entityManager.persist(mechanic);
         entityManager.persist(car);
         entityManager.persist(customer);
