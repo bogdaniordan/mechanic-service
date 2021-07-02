@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class CustomerService {
@@ -50,6 +51,11 @@ public class CustomerService {
 
     public User addCredentials(User user) {
         return credentialsRepository.save(user);
+    }
+
+    public Customer customerByUserId(Long id) {
+        return customerRepository.findCustomerByUserId(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Could not find customer with user id: " + id));
     }
 
 }

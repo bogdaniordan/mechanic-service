@@ -7,7 +7,7 @@ import MechanicProfile from "./components/mechanic/MechanicProfile";
 import CreateCarComponent from "./components/car/CreateCarComponent";
 import React, {Component} from "react";
 import LoginComponent from "./components/authentication/LoginComponent";
-import axios from "axios";
+import CustomerProfileComponent from "./components/customer/CustomerProfileComponent";
 
 class App extends Component{
     constructor(props) {
@@ -16,6 +16,7 @@ class App extends Component{
             loggedInStatus: "NOT_LOGGED_IN",
             user: {}
         }
+        this.handleLogin = this.handleLogin.bind(this);
     }
 
     handleLogin(data) {
@@ -42,6 +43,7 @@ class App extends Component{
                                 <LoginComponent {...props} handleLogin={this.handleLogin}/>
                                 )}></Route>
                             {/*<Route path="/login" component={LoginComponent}></Route>*/}
+                            <Route path="/user-profile/:id" component={CustomerProfileComponent}></Route>
 
                         </Switch>
                     </div>

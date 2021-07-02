@@ -11,7 +11,8 @@ class LoginComponent extends Component {
         this.setUserName = this.setUserName.bind(this);
         this.setPassword = this.setPassword.bind(this);
         this.login = this.login.bind(this);
-        this.logInFunction = this.logInFunction.bind(this);
+        // this.logInFunction = this.logInFunction.bind(this);
+        // this.props.handleLogin = this.props.handleLogin.bind(this);
     }
 
     setUserName = (event) => {
@@ -22,9 +23,9 @@ class LoginComponent extends Component {
         this.setState({password: event.target.value});
     }
 
-    logInFunction(data) {
-        this.props.handleLogin(data)
-    }
+    // logInFunction(data) {
+    //     this.props.handleLogin(data)
+    // }
 
     login = (event) => {
         event.preventDefault();
@@ -34,8 +35,12 @@ class LoginComponent extends Component {
         }
         axios.post("http://localhost:8080/users", user).then(r => {
             console.log(r.data)
-            this.logInFunction(r.data)
-            // this.props.handleLogin(r.data);
+            // this.logInFunction(r.data)
+            this.props.handleLogin(r.data);
+            if (r.data) {
+                this.props.history.push("/");
+
+            }
         })
     }
 
@@ -47,6 +52,7 @@ class LoginComponent extends Component {
                 <p>Password</p>
                 <input name="password" onChange={this.setPassword}/>
                 <button onClick={this.login}>btn</button>
+                {/*<p ref="wrong" style={{display: "none"}}>Wrong username or password!</p>*/}
             </div>
         );
     }

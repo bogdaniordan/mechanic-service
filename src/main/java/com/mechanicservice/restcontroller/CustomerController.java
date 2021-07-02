@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@CrossOrigin(origins = "http://localhost:3000")
 @RestController
 @Slf4j
 @RequestMapping("/customers")
@@ -61,6 +62,13 @@ public class CustomerController {
         log.info("Saving new user credentials");
         User newUser = customerService.addCredentials(user);
         return new ResponseEntity<>(newUser, HttpStatus.CREATED);
+    }
+
+    @GetMapping("/by-user-id/{id}")
+    public ResponseEntity<Customer> customerByUserId(@PathVariable Long id) {
+        log.info("Retrieving customer by user id: " + id);
+        Customer customer = customerService.customerByUserId(id);
+        return new ResponseEntity<>(customer, HttpStatus.OK);
     }
 
 //    @GetMapping("")
