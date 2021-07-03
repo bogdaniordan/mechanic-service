@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
 import MechanicService from "../../service/MechanicService";
+import axios from "axios";
+import AuthHeader from "../../service/AuthHeader";
 
 class MechanicComponent extends Component {
     constructor(props) {
@@ -16,8 +18,9 @@ class MechanicComponent extends Component {
     refreshMechanics() {
         MechanicService.getAllMechanics().then((response) => {
             this.setState({ mechanics: response.data })
+            // console.log(response.data)
         });
-    }
+     }
 
     componentDidMount() {
         // if (this.props.loggedInStatus === "NOT_LOGGED_IN") {

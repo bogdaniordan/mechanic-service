@@ -28,6 +28,7 @@ class CreateCarComponent extends Component {
             requiredservice: this.state.requiredService
         }
         CarService.createCarAndAssignIt(this.state.mechanicId, car).then(response => {
+            console.log(car)
             this.cancel();
         });
     }

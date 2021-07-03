@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import axios from "axios";
+import AuthService from "../../service/AuthService";
 
 class LoginComponent extends Component {
     constructor(props) {
@@ -34,10 +35,10 @@ class LoginComponent extends Component {
             password: this.state.password
         }
         axios.post("http://localhost:8080/users/authenticate", user).then(r => {
-            console.log(r.data)
             // this.logInFunction(r.data)
             this.props.handleLogin(r.data);
             if (r.data) {
+                console.log(r.data);
                 localStorage.setItem("user", JSON.stringify(r.data));
             }
         })

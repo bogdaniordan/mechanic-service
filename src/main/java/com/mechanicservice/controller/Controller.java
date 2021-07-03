@@ -11,28 +11,28 @@ import java.util.List;
 @org.springframework.stereotype.Controller
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 public class Controller {
-    @Autowired
-    private CustomerService customerService;
-
-    @GetMapping("/")
-    public String indexPage() {
-        return "index";
-    }
-
-    @PostMapping("/")
-    public RedirectView logIn(@RequestParam(value = "username") String username,
-                                @RequestParam(value = "password") String password) {
-        List<User> credentials = customerService.getAllCredentials();
-        for (User credential: credentials) {
-            if (credential.getUsername().equals(username) && credential.getPassword().equals(password)) {
-                return new RedirectView("/homepage");
-            }
-        }
-        return new RedirectView("");
-    }
-
-    @GetMapping("/homepage")
-    public String homePage() {
-        return "homepage";
-    }
+//    @Autowired
+//    private CustomerService customerService;
+//
+//    @GetMapping("/")
+//    public String indexPage() {
+//        return "index";
+//    }
+//
+//    @PostMapping("/")
+//    public RedirectView logIn(@RequestParam(value = "username") String username,
+//                                @RequestParam(value = "password") String password) {
+//        List<User> credentials = customerService.getAllCredentials();
+//        for (User credential: credentials) {
+//            if (credential.getUsername().equals(username) && credential.getPassword().equals(password)) {
+//                return new RedirectView("/homepage");
+//            }
+//        }
+//        return new RedirectView("");
+//    }
+//
+//    @GetMapping("/homepage")
+//    public String homePage() {
+//        return "homepage";
+//    }
 }
