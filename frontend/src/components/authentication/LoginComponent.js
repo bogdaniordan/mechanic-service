@@ -12,6 +12,7 @@ class LoginComponent extends Component {
         this.setUserName = this.setUserName.bind(this);
         this.setPassword = this.setPassword.bind(this);
         this.login = this.login.bind(this);
+        // this.currentUser = this.currentUser.bind(this);
         // this.logInFunction = this.logInFunction.bind(this);
         // this.props.handleLogin = this.props.handleLogin.bind(this);
     }
@@ -35,13 +36,19 @@ class LoginComponent extends Component {
             password: this.state.password
         }
         axios.post("http://localhost:8080/users/authenticate", user).then(r => {
-            // this.logInFunction(r.data)
             this.props.handleLogin(r.data);
             if (r.data) {
                 console.log(r.data);
                 localStorage.setItem("user", JSON.stringify(r.data));
+                this.props.history.push("/");
             }
         })
+    }
+
+    componentDidMount() {
+        if (AuthService.getCurrentUser()) {
+            this.props.history.push("/logout");
+        }
     }
 
     render() {

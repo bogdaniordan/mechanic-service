@@ -8,22 +8,13 @@ import CreateCarComponent from "./components/car/CreateCarComponent";
 import React, {Component} from "react";
 import LoginComponent from "./components/authentication/LoginComponent";
 import CustomerProfileComponent from "./components/customer/CustomerProfileComponent";
+import LogoutComponent from "./components/authentication/LogoutComponent";
 
 class App extends Component{
     constructor(props) {
         super(props);
         this.state = {
-            loggedInStatus: "NOT_LOGGED_IN",
-            user: {}
         }
-        this.handleLogin = this.handleLogin.bind(this);
-    }
-
-    handleLogin(data) {
-        this.setState({
-            loggedInStatus: "LOGGED_IN",
-            user: data.user
-        });
     }
 
     render() {
@@ -32,19 +23,14 @@ class App extends Component{
                 <Router>
                     <div className="container">
                         <Switch>
-                            <Route path="/" exact render = {(props) => (
-                                <MechanicComponent {...props} loggedInStatus = {this.state.loggedInStatus}/>
-                            )}></Route>
+                            <Route path="/" exact component={MechanicComponent} ></Route>
                             <Route path="/add-mechanic" component = {CreateMechanicComponent}></Route>
                             <Route path="/update-mechanic/:id" component = {UpdateMechanicComponent}></Route>
                             <Route path="/mechanic/:id" component = {MechanicProfile}></Route>
                             <Route path="/add-car/:mechanicId" component = {CreateCarComponent}></Route>
-                            <Route path="/login" render = {(props) => (
-                                <LoginComponent {...props} handleLogin={this.handleLogin}/>
-                                )}></Route>
-                            {/*<Route path="/login" component={LoginComponent}></Route>*/}
+                            <Route path="/login" component={LoginComponent}></Route>
                             <Route path="/user-profile/:id" component={CustomerProfileComponent}></Route>
-
+                            <Route path="/logout" component={LogoutComponent}></Route>
                         </Switch>
                     </div>
                 </Router>

@@ -14,11 +14,11 @@ class CarService {
     }
 
     createCarAndAssignIt(id, car) {
-        return axios.post(CARS_REST_API_URL + "/" + id, { headers: AuthHeader() });
+        return axios.post(CARS_REST_API_URL + "/" + id, car, { headers: AuthHeader() });
     }
 
     updateCarStatus(id) {
-        return axios.put(CARS_REST_API_URL + "/update-status/" + id, { headers: AuthHeader() });
+        return axios.put(CARS_REST_API_URL + "/update-status/" + id, null, { headers: AuthHeader() });
     }
 }
 
