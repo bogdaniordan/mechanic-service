@@ -22,7 +22,7 @@ public class CustomerService {
     private CustomerRepository customerRepository;
 
     @Autowired
-    private UserRepository credentialsRepository;
+    private UserRepository userRepository;
 
     public List<Customer> getAllCustomers() {
         return customerRepository.findAll();
@@ -45,11 +45,11 @@ public class CustomerService {
     }
 
     public List<User> getAllCredentials() {
-        return credentialsRepository.findAll();
+        return userRepository.findAll();
     }
 
     public User addCredentials(User user) {
-        return credentialsRepository.save(user);
+        return this.userRepository.save(user);
     }
 
     public Customer customerByUserId(Long id) {
@@ -57,4 +57,10 @@ public class CustomerService {
                 .orElseThrow(() -> new ResourceNotFoundException("Could not find customer with user id: " + id));
     }
 
+    public Customer customerByUsername(String username) {
+        Integer userId = userRepository.findIdByUsername(username)
+                .orElseThrow(() -> new ResourceNotFoundException("Could not find user"));
+        return customerRepository.findCustomerByUserId((long) userId)
+                .orElseThrow(() -> new ResourceNotFoundException("Could not find customer with customer id: " + userId));
+    }
 }

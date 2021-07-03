@@ -71,6 +71,13 @@ public class CustomerController {
         return new ResponseEntity<>(customer, HttpStatus.OK);
     }
 
+    @GetMapping("/customer-by-username/{username}")
+    public ResponseEntity<Customer> customerByUsername(@PathVariable String username) {
+        log.info("Fetching customer with username: " + username);
+        Customer customer = customerService.customerByUsername(username);
+        return new ResponseEntity<>(customer, HttpStatus.OK);
+    }
+
 //    @GetMapping("")
 //    CollectionModel<EntityModel<Customer>> getCustomers() {
 //        log.info("Fetching " + Arrays.toString(customerRepository.findAll().toArray()));

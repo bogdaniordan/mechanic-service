@@ -10,6 +10,9 @@ class CustomerService {
         return axios.get(CUSTOMER_SERVICE_API_URL + "/by-user-id/" + id, { headers: AuthHeader() })
     }
 
+    getCustomerByHisUsername(username) {
+        return axios.get(CUSTOMER_SERVICE_API_URL + "/customer-by-username/" + username, { headers: AuthHeader() } )
+    }
 }
 
 export default new CustomerService();
