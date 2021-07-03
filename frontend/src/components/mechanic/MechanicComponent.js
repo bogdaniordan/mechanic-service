@@ -20,9 +20,9 @@ class MechanicComponent extends Component {
     }
 
     componentDidMount() {
-        if (this.props.loggedInStatus === "NOT_LOGGED_IN") {
-            this.props.history.push("/login")
-        }
+        // if (this.props.loggedInStatus === "NOT_LOGGED_IN") {
+        //     this.props.history.push("/login")
+        // }
         this.refreshMechanics()
     }
 

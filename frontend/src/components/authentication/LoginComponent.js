@@ -33,13 +33,12 @@ class LoginComponent extends Component {
             username: this.state.username,
             password: this.state.password
         }
-        axios.post("http://localhost:8080/users", user).then(r => {
+        axios.post("http://localhost:8080/users/authenticate", user).then(r => {
             console.log(r.data)
             // this.logInFunction(r.data)
             this.props.handleLogin(r.data);
             if (r.data) {
-                this.props.history.push("/");
-
+                localStorage.setItem("user", JSON.stringify(r.data));
             }
         })
     }

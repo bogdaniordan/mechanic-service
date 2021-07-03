@@ -15,8 +15,9 @@ class CustomerProfileComponent extends Component {
     componentDidMount() {
         CustomerService.getCustomerByUserId(this.state.id).then(r => {
             this.setState({name: r.data.name})
-            // this.setState({ownedCar: r.data.ownedCar})
-            // console.log(r.data.ownedCar)
+            this.setState({ownedCar: r.data.ownedCar})
+            console.log(r.data)
+            console.log(r.data.ownedCar)
         })
     }
 

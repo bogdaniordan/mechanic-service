@@ -3,6 +3,9 @@ package com.mechanicservice;
 import com.mechanicservice.data.DataGenerator;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Bean;
+import org.springframework.security.crypto.password.NoOpPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -24,6 +27,12 @@ public class MechanicServiceApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(MechanicServiceApplication.class, args);
 		initializeDatabase();
+	}
+
+
+	@Bean
+	public PasswordEncoder passwordEncoder() {
+		return NoOpPasswordEncoder.getInstance();
 	}
 
 

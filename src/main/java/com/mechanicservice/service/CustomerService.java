@@ -4,14 +4,13 @@ import com.mechanicservice.model.Car;
 import com.mechanicservice.model.User;
 import com.mechanicservice.model.Customer;
 import com.mechanicservice.repository.CarRepository;
-import com.mechanicservice.repository.CredentialsRepository;
 import com.mechanicservice.repository.CustomerRepository;
+import com.mechanicservice.repository.UserRepository;
 import org.apache.velocity.exception.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class CustomerService {
@@ -23,7 +22,7 @@ public class CustomerService {
     private CustomerRepository customerRepository;
 
     @Autowired
-    private CredentialsRepository credentialsRepository;
+    private UserRepository credentialsRepository;
 
     public List<Customer> getAllCustomers() {
         return customerRepository.findAll();
