@@ -58,9 +58,9 @@ public class CustomerService {
     }
 
     public Customer customerByUsername(String username) {
-        Integer userId = userRepository.findIdByUsername(username)
+        User user = userRepository.findByUsername(username)
                 .orElseThrow(() -> new ResourceNotFoundException("Could not find user"));
-        return customerRepository.findCustomerByUserId((long) userId)
-                .orElseThrow(() -> new ResourceNotFoundException("Could not find customer with customer id: " + userId));
+        return customerRepository.findCustomerByUserId(user.getId())
+                .orElseThrow(() -> new ResourceNotFoundException("Could not find customer with customer id: " + user.getId()));
     }
 }

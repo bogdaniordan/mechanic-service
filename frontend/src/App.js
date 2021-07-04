@@ -29,7 +29,7 @@ class App extends Component{
                             <Route path="/mechanic/:id" component = {MechanicProfile}></Route>
                             <Route path="/add-car/:mechanicId" component = {CreateCarComponent}></Route>
                             <Route path="/login" component={LoginComponent}></Route>
-                            <Route path="/user-profile/:id" component={CustomerProfileComponent}></Route>
+                            <Route path="/user-profile" component={CustomerProfileComponent}></Route>
                             <Route path="/logout" component={LogoutComponent}></Route>
                         </Switch>
                     </div>

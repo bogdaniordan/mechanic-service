@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import axios from "axios";
 import AuthService from "../../service/AuthService";
 import CustomerService from "../../service/CustomerService";
+import AuthHeader from "../../service/AuthHeader";
 
 class LoginComponent extends Component {
     constructor(props) {
@@ -38,11 +39,18 @@ class LoginComponent extends Component {
         }
         axios.post("http://localhost:8080/users/authenticate", user).then(r => {
             if (r.data) {
-                console.log(r.data);
+                // console.log(r.data);
                 localStorage.setItem("user", JSON.stringify(r.data));
-                CustomerService.getCustomerByHisUsername(this.state.username).then(response => {
-                    console.log(r.data)
-                    localStorage.setItem("customer", JSON.stringify(r.data))
+                // nu merge cu fctia din service trb facut ca mai sus
+                // CustomerService.getCustomerByHisUsername(this.state.username).then(response => {
+                //     console.log(r.data)
+                //     localStorage.setItem("customer", JSON.stringify(r.data))
+                // })
+
+                axios.get("http://localhost:8080/customers/customer-by-username/" + this.state.username, {headers: AuthHeader()}).then(response => {
+                    console.log(response.data);
+                    localStorage.setItem("customer", JSON.stringify(response.data))
+
                 })
                 this.props.history.push("/");
             }

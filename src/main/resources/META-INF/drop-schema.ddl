@@ -3293,3 +3293,75 @@
     drop table if exists user_credentials cascade
 
     drop sequence if exists hibernate_sequence
+
+    alter table if exists customer 
+       drop constraint if exists FKmfjfudsedybibx28cmjhxtb4
+
+    alter table if exists customer 
+       drop constraint if exists FK78pio25qdho8j6h0eqvy1fli2
+
+    alter table if exists service 
+       drop constraint if exists FKnrrevpm4otovp3e6jvpmao4e1
+
+    alter table if exists service 
+       drop constraint if exists FK8x8qehjum64psba3xtty9akt1
+
+    drop table if exists car cascade
+
+    drop table if exists customer cascade
+
+    drop table if exists mechanic cascade
+
+    drop table if exists service cascade
+
+    drop table if exists user_credentials cascade
+
+    drop sequence if exists hibernate_sequence
+
+    alter table if exists customer 
+       drop constraint if exists FKmfjfudsedybibx28cmjhxtb4
+
+    alter table if exists customer 
+       drop constraint if exists FK78pio25qdho8j6h0eqvy1fli2
+
+    alter table if exists service 
+       drop constraint if exists FKnrrevpm4otovp3e6jvpmao4e1
+
+    alter table if exists service 
+       drop constraint if exists FK8x8qehjum64psba3xtty9akt1
+
+    drop table if exists car cascade
+
+    drop table if exists customer cascade
+
+    drop table if exists mechanic cascade
+
+    drop table if exists service cascade
+
+    drop table if exists user_credentials cascade
+
+    drop sequence if exists hibernate_sequence
+
+    alter table if exists customer 
+       drop constraint if exists FKmfjfudsedybibx28cmjhxtb4
+
+    alter table if exists customer 
+       drop constraint if exists FK78pio25qdho8j6h0eqvy1fli2
+
+    alter table if exists service 
+       drop constraint if exists FKnrrevpm4otovp3e6jvpmao4e1
+
+    alter table if exists service 
+       drop constraint if exists FK8x8qehjum64psba3xtty9akt1
+
+    drop table if exists car cascade
+
+    drop table if exists customer cascade
+
+    drop table if exists mechanic cascade
+
+    drop table if exists service cascade
+
+    drop table if exists user_credentials cascade
+
+    drop sequence if exists hibernate_sequence

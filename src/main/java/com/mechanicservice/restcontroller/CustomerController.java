@@ -78,29 +78,4 @@ public class CustomerController {
         return new ResponseEntity<>(customer, HttpStatus.OK);
     }
 
-//    @GetMapping("")
-//    CollectionModel<EntityModel<Customer>> getCustomers() {
-//        log.info("Fetching " + Arrays.toString(customerRepository.findAll().toArray()));
-//        List<EntityModel<Customer>> customers = customerRepository.findAll().stream()
-//                .map(customer -> EntityModel.of(customer,
-//                        linkTo(methodOn(CustomerController.class).getCustomer(customer.getId())).withSelfRel(),
-//                        linkTo(methodOn(CustomerController.class).getCustomers()).withRel("customers")))
-//                .collect(Collectors.toList());
-//
-//        return CollectionModel.of(customers, linkTo(methodOn(CustomerController.class).getCustomers()).withSelfRel());
-//    }
-////
-//    @GetMapping("/{id}")
-//    public EntityModel<Customer> getCustomer(@PathVariable Long id) {
-//        log.info("Fetching customer with id: " + id);
-//        Customer customer = customerRepository.findById(id)
-//                .orElseThrow(() -> {
-//                    log.warn("Could not find customer with id: " + id);
-//                    throw new ResourceNotFoundException("Customer not found");
-//                });
-//        return EntityModel.of(customer,
-//                linkTo(methodOn(CustomerController.class).getCustomer(id)).withSelfRel(),
-//                linkTo(methodOn(CustomerController.class).getCustomers()).withRel("customers"));
-//    }
-
 }

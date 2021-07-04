@@ -16,8 +16,8 @@ class AuthService {
     }
 
     logout() {
-        localStorage.removeItem("user")
-        localStorage.removeItem("customer")
+        localStorage.removeItem("user");
+        localStorage.removeItem("customer");
     }
 
     register(username, email, password) {
@@ -29,7 +29,11 @@ class AuthService {
     }
 
     getCurrentUser() {
-        return JSON.parse(localStorage.getItem('user'));;
+        return JSON.parse(localStorage.getItem('user'));
+    }
+
+    getCurrentCustomerUser() {
+        return JSON.parse(localStorage.getItem("customer"))
     }
 }
 
