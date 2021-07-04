@@ -13,6 +13,7 @@ class MechanicComponent extends Component {
         this.refreshMechanics = this.refreshMechanics.bind(this)
         this.addMechanic = this.addMechanic.bind(this);
         this.viewMechanic = this.viewMechanic.bind(this);
+        this.goToProfile = this.goToProfile.bind(this);
     }
 
     refreshMechanics() {
@@ -23,9 +24,6 @@ class MechanicComponent extends Component {
      }
 
     componentDidMount() {
-        // if (this.props.loggedInStatus === "NOT_LOGGED_IN") {
-        //     this.props.history.push("/login")
-        // }
         this.refreshMechanics()
     }
 
@@ -46,9 +44,9 @@ class MechanicComponent extends Component {
         this.props.history.push(`/mechanic/${id}`);
     }
 
-    // updateMechanic(mechanicId) {
-    //     this.props.history.push(`/update-mechanic/${mechanicId}`);
-    // }
+    goToProfile() {
+        this.props.history.push("/user_profile")
+    }
 
     render() {
         return (
@@ -86,6 +84,7 @@ class MechanicComponent extends Component {
                 </div>
                 <br/>
                 <button className="btn btn-primary" onClick={this.addMechanic}>Add mechanic</button>
+                <button className="btn btn-dark" onClick={this.goToProfile}>My profile</button>
             </div>
         );
     }

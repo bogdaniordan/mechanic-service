@@ -8,17 +8,13 @@ export default function ExpiredTokenService() {
         console.log("Decoded Token", decodedToken);
         let currentDate = new Date();
 
-        // let result;
         // JWT exp is in seconds
         if (decodedToken.exp * 1000 < currentDate.getTime()) {
             console.log("Token expired.");
-            // result = false;
             AuthService.logout();
         } else {
             console.log("Valid token");
-            // result = true;
         }
-        // return result;
     }
 
 }

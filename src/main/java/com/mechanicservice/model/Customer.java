@@ -26,9 +26,29 @@ public class Customer {
     @OneToOne
     private User user;
 
-    public Customer(String name) {
+    @Column(name = "email")
+    private String email;
+
+    @Column(name = "phonenumber")
+    private String phoneNumber;
+
+    @Column(name = "street")
+    private String street;
+
+    @Column(name = "city")
+    private String city;
+
+    public Customer(String name, String email, String phoneNumber, String street, String city) {
         this.name = name;
+        this.email = email;
+        this.phoneNumber = phoneNumber;
+        this.street = street;
+        this.city = city;
     }
+
+//    public Customer(String name) {
+//        this.name = name;
+//    }
 
     public void assignCar(Car ownedCar) {
         this.ownedCar = ownedCar;

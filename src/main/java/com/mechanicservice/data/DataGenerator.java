@@ -23,21 +23,24 @@ public class DataGenerator {
         Mechanic mechanic3 =  new Mechanic("Nea Dani", ServiceType.BUMPER_REPLACEMENT);
         Car car = new Car("dacia", RepairedStatus.BROKEN, ServiceType.ENGINE_REPAIR, FuelType.DIESEL);
         car.assignMechanic(mechanic);
-        Customer customer = new Customer("gin");
+        Customer customer = new Customer("Bodgan Iordan", "bogdan.iordan@yahoo.com", "0224342325", "Plutasilor", "Bucale");
+        Customer otherCustomer = new Customer("Gigi Becali", "becali@gmail","928329", "Antareestrat", "4343");
         customer.assignCar(car);
         Service service = new Service(ServiceType.ENGINE_REPAIR, new Date());
         service.assignCar(car);
         mechanic.addPicture("frontend/src/components/resources/sergei.jpg");
         service.assignMechanic(mechanic);
         User user = new User("bogdan", "1234");
+        User otherUser = new User("becali", "steaua");
         customer.assignCredentials(user);
-//        car.assignMechanic(mechanic);
-
+        otherCustomer.assignCredentials(otherUser);
 
         entityManager.persist(user);
+        entityManager.persist(otherUser);
         entityManager.persist(mechanic);
         entityManager.persist(car);
         entityManager.persist(customer);
+        entityManager.persist(otherCustomer);
         entityManager.persist(service);
         entityManager.persist(mechanic1);
         entityManager.persist(mechanic2);

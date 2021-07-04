@@ -49,6 +49,14 @@ public class CarController {
         return new ResponseEntity<>(savedCar, HttpStatus.OK);
     }
 
+    @PutMapping("/assign-to-mechanic/{mechanic-id}")
+    public ResponseEntity<Car> assignExistingCarToMechanic(@RequestBody Car car, @PathVariable("mechanic-id") Long mechanicId) {
+        log.info("Assigning car to mechanic with id: " + mechanicId);
+        Car updatedCar = carService.saveCar(car, mechanicId);
+        return new ResponseEntity<>(updatedCar, HttpStatus.OK);
+
+    }
+
     @PutMapping("/update-status/{id}")
     public ResponseEntity<Car> updateCarRepairedStatus(@PathVariable Long id) {
         log.info("Updating repair status of car with id: " + id);
