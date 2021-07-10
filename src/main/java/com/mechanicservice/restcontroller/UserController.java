@@ -24,7 +24,6 @@ public class UserController {
     @Autowired
     UserRepository userRepository;
 
-
     @Autowired
     private JWTUtility jwtUtility;
 
@@ -37,7 +36,6 @@ public class UserController {
 
     @PostMapping("/authenticate")
     public JwtResponse authenticate(@RequestBody JwtRequest jwtRequest) throws Exception{
-
         try {
             authenticationManager.authenticate(
                     new UsernamePasswordAuthenticationToken(

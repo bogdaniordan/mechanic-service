@@ -2,6 +2,7 @@ package com.mechanicservice.service;
 
 import com.mechanicservice.model.Car;
 import com.mechanicservice.model.Mechanic;
+import com.mechanicservice.model.ServiceType;
 import com.mechanicservice.repository.CarRepository;
 import com.mechanicservice.repository.MechanicRepository;
 import org.apache.velocity.exception.ResourceNotFoundException;
@@ -44,5 +45,11 @@ public class MechanicService {
             return mechanic;
         }
         return null;
+    }
+
+
+    public List<Mechanic> getMechanicsBySpecialization(String specialization) {
+        return mechanicRepository.getMechanicBySpecialization(Enum.valueOf(ServiceType.class, specialization))
+                .orElseThrow(() -> new ResourceNotFoundException("Could not find any mechanic with specialization: " + specialization));
     }
 }

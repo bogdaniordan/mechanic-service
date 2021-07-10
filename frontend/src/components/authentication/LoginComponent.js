@@ -53,6 +53,8 @@ class LoginComponent extends Component {
 
                 })
                 this.props.history.push("/");
+            } else {
+                alert("Incorrect username or password.")
             }
         })
     }

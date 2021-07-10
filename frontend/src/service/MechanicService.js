@@ -10,9 +10,9 @@ class MechanicService {
     }
 
     getAllMechanics() {
-        console.log(AuthHeader());
-        // const user = JSON.parse(localStorage.getItem('user'));
-        // console.log(user.jwtToken)
+        // console.log(AuthHeader());
+        // // const user = JSON.parse(localStorage.getItem('user'));
+        // // console.log(user.jwtToken)
         return axios.get(MECHANIC_REST_API, { headers: AuthHeader() });
     }
 
@@ -27,6 +27,11 @@ class MechanicService {
     updateMechanic(mechanic, id) {
         return axios.put(MECHANIC_REST_API + "/" + id, mechanic, { headers: AuthHeader() })
     }
+
+    getMechanicsBySpecialization(specialization) {
+        return axios.get(MECHANIC_REST_API + "/get-by-specialization/" + specialization, { headers: AuthHeader() })
+    }
 }
+
 
 export default new MechanicService();

@@ -61,4 +61,11 @@ public class MechanicController {
         }
         return ResponseEntity.notFound().build();
     }
+
+    @GetMapping("/get-by-specialization/{specialization}")
+    public ResponseEntity<List<Mechanic>> getMechanicsBySpecialization(@PathVariable String specialization) {
+        log.info("Fetching mechanics with specialization: " + specialization);
+        List<Mechanic> mechanics = mechanicService.getMechanicsBySpecialization(specialization);
+        return new ResponseEntity<>(mechanics, HttpStatus.OK);
+    }
 }

@@ -34,7 +34,6 @@ class CustomerProfileComponent extends Component {
                 this.setState({address: r.data.street})
                 this.setState({city: r.data.city})
                 // this.setState({ownedCar: r.data.ownedCar.brandName})
-                // console.log(this.state.ownedCar)
             })
 
         }
@@ -45,7 +44,7 @@ class CustomerProfileComponent extends Component {
     }
 
     assignCarToMechanic() {
-
+        // get user's (customer's) car and assign it to a mechanic - mechanic selected from a dropdown list
     }
 
     render() {
