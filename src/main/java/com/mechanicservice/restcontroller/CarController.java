@@ -73,4 +73,12 @@ public class CarController {
         return ResponseEntity.notFound().build();
     }
 
+
+    @PutMapping("/replace-customer-car/{id}")
+    public ResponseEntity<Car> replaceCustomerCar(@RequestBody Car car, @PathVariable("id") Long id) {
+        log.info("Replacing car of customer with id: " + id);
+        Car newCar = carService.replaceCustomerCar(car, id);
+        return new ResponseEntity<>(newCar,HttpStatus.CREATED);
+    }
+
 }

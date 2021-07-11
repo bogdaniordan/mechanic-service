@@ -22,7 +22,6 @@ class MechanicComponent extends Component {
     refreshMechanics() {
         MechanicService.getAllMechanics().then((response) => {
             this.setState({ mechanics: response.data })
-            // console.log(response.data)
         });
      }
 
@@ -48,13 +47,13 @@ class MechanicComponent extends Component {
     }
 
     goToProfile() {
-        this.props.history.push("/user_profile")
+        this.props.history.push("/profile")
     }
 
     signedInUser() {
         let user;
         if (AuthService.getCurrentUser()) {
-            user = AuthService.getCurrentCustomerUser();
+            user = AuthService.getCurrentCustomer();
         } else {
             user = "Guest";
         }

@@ -18,6 +18,7 @@ class MechanicProfile extends Component {
     componentDidMount(){
         MechanicService.getMechanic(this.state.id).then( res => {
             this.setState({mechanic: res.data});
+            console.log(res.data)
         })
     }
 

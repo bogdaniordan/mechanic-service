@@ -5,17 +5,22 @@ import com.mechanicservice.model.Mechanic;
 import com.mechanicservice.model.ServiceType;
 import com.mechanicservice.repository.CarRepository;
 import com.mechanicservice.repository.MechanicRepository;
+import com.mechanicservice.repository.ServiceRepository;
 import org.apache.velocity.exception.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class MechanicService {
 
     @Autowired
     private MechanicRepository mechanicRepository;
+
+    @Autowired
+    private ServiceRepository serviceRepository;
 
     public List<Mechanic> getAllMechanics() {
         return mechanicRepository.findAll();
@@ -41,6 +46,12 @@ public class MechanicService {
     public Mechanic deleteById(Long id) {
         if (mechanicRepository.findById(id).isPresent()) {
             Mechanic mechanic = mechanicRepository.findById(id).get();
+            Optional<List<com.mechanicservice.model.Service>> servicesByMechanic = serviceRepository.getServicesByMechanic_Id(id);
+            if (servicesByMechanic.isPresent()) {
+                for (com.mechanicservice.model.Service service: servicesByMechanic.get()) {
+                    serviceRepository.delete(service);
+                }
+            }
             mechanicRepository.delete(mechanic);
             return mechanic;
         }

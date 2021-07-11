@@ -46,10 +46,6 @@ public class Customer {
         this.city = city;
     }
 
-//    public Customer(String name) {
-//        this.name = name;
-//    }
-
     public void assignCar(Car ownedCar) {
         this.ownedCar = ownedCar;
     }

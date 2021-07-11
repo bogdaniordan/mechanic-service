@@ -13,9 +13,11 @@ class CustomerProfileComponent extends Component {
             phoneNumber: "",
             address: "",
             username: "",
-            city: ""
+            city: "",
+            fuel: ""
         }
         this.assignCarToMechanic = this.assignCarToMechanic.bind(this);
+        this.replaceCar = this.replaceCar.bind(this);
     }
 
     userLoggedInChecker() {
@@ -23,17 +25,18 @@ class CustomerProfileComponent extends Component {
             this.props.history.push("/login")
         } else {
 
-            this.setState({name: AuthService.getCurrentCustomerUser().name})
-            this.setState({email: AuthService.getCurrentCustomerUser}.email)
+            this.setState({name: AuthService.getCurrentCustomer().name})
+            this.setState({email: AuthService.getCurrentCustomer}.email)
 
-            CustomerService.getCustomerById(AuthService.getCurrentCustomerUser().id).then(r => {
+            CustomerService.getCustomerById(AuthService.getCurrentCustomer().id).then(r => {
 
                 console.log(r.data)
+                this.setState({id: AuthService.getCurrentCustomer().id})
                 this.setState({phoneNumber: r.data.phoneNumber})
                 this.setState({username: r.data.user.username})
                 this.setState({address: r.data.street})
                 this.setState({city: r.data.city})
-                // this.setState({ownedCar: r.data.ownedCar.brandName})
+                this.setState({ownedCar: r.data.ownedCar.fuel})
             })
 
         }
@@ -45,6 +48,10 @@ class CustomerProfileComponent extends Component {
 
     assignCarToMechanic() {
         // get user's (customer's) car and assign it to a mechanic - mechanic selected from a dropdown list
+    }
+
+    replaceCar() {
+        this.props.history.push(`/replace-user-car/${this.state.id}`)
     }
 
     render() {
@@ -78,8 +85,7 @@ class CustomerProfileComponent extends Component {
                                         <div className="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                                             <div className="form-group">
                                                 <label htmlFor="fullName">Full Name</label>
-                                                <input type="text" className="form-control" id="fullName"
-                                                       placeholder="Enter full name"/>
+                                                <p>{this.state.name}</p>
                                             </div>
                                         </div>
                                         <div className="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
@@ -125,7 +131,7 @@ class CustomerProfileComponent extends Component {
                                         <div className="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                                             <div className="form-group">
                                                 <label htmlFor="ciTy">Fuel type</label>
-                                                {/*<p>{this.state.city}</p>*/}
+                                                <p>{this.state.fuel}</p>
                                             </div>
                                         </div>
                                     </div>
@@ -138,6 +144,7 @@ class CustomerProfileComponent extends Component {
                                                 <button type="button" id="submit" name="submit"
                                                         className="btn btn-primary">Update
                                                 </button>
+                                                <button type="button" id="submit" name = "submit" className="btn btn-success" onClick={this.replaceCar}>Replace car</button>
                                             </div>
                                         </div>
                                     </div>

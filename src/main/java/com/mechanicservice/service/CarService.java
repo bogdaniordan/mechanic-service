@@ -5,6 +5,7 @@ import com.mechanicservice.model.Customer;
 import com.mechanicservice.model.Mechanic;
 import com.mechanicservice.model.RepairedStatus;
 import com.mechanicservice.repository.CarRepository;
+import com.mechanicservice.repository.CustomerRepository;
 import com.mechanicservice.repository.MechanicRepository;
 import org.apache.velocity.exception.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +21,9 @@ public class CarService {
 
     @Autowired
     private CarRepository carRepository;
+
+    @Autowired
+    private CustomerRepository customerRepository;
 
     public List<Car> getAllCars() {
         return carRepository.findAll();
@@ -54,5 +58,14 @@ public class CarService {
                 .orElseThrow(() -> new ResourceNotFoundException("Could not find car with id: " + id));
         car.setRepairedstatus(RepairedStatus.REPAIRED);
         return carRepository.save(car);
+    }
+
+    public Car replaceCustomerCar(Car car, Long id) {
+        carRepository.save(car);
+        Customer customer = customerRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Could not find the customer with id: " + id));
+        customer.assignCar(car);
+        customerRepository.save(customer);
+        return car;
     }
 }

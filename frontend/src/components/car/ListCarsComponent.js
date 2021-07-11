@@ -61,7 +61,7 @@ class ListCarsComponent extends Component {
                                         <td>{car.fuel}</td>
                                         <td>{car.repairedstatus}</td>
                                         <td>{car.requiredservice}</td>
-                                        <td>{car.repairedstatus === "BROKEN" ? <button className="btn-dark" onClick={() => this.repairCar(car.id, car.requiredservice)}>REPAIR</button> : <strong>REPAIRED</strong>}</td>
+                                        <td>{car.repairedstatus === "BROKEN" ? (this.props.specialization === car.requiredservice ? <button className="btn-dark" onClick={() => this.repairCar(car.id, car.requiredservice)}>REPAIR</button> : <strong>CANNOT REPAIR</strong>) : <strong>REPAIRED</strong>}</td>
                                     </tr>
                             )
                         }
