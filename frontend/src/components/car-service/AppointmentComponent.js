@@ -1,11 +1,13 @@
 import React, {Component} from 'react';
 import AuthService from "../../service/AuthService";
 import CustomerService from "../../service/CustomerService";
+import AppointmentService from "../../service/AppointmentService";
 
 class AppointmentComponent extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            mechanicId: this.props.match.params.mechanicId,
             name: "",
             email: "",
             requiredService: "",
@@ -23,7 +25,7 @@ class AppointmentComponent extends Component {
         this.setState({email: AuthService.getCurrentCustomer}.email)
         CustomerService.getCustomerById(AuthService.getCurrentCustomer().id).then(r => {
             console.log(r.data)
-            if (r.data.ownedCar.repairedstatus === "BROKEN") {
+            if (r.data.ownedCar.repairedstatus !== "BROKEN") {
                 this.props.history.push("/redirect-home-appointment");
             }
             this.setState({requiredService: r.data.ownedCar.requiredservice})
@@ -45,7 +47,14 @@ class AppointmentComponent extends Component {
     }
 
     makeAppointment() {
-
+        const appointment = {
+            requiredservice: this.state.requiredService,
+            localDate: this.state.date,
+            time: this.state.time
+        }
+        AppointmentService.createNewAppointment(this.state.mechanicId, AuthService.getCurrentCustomer().id, appointment).then(r => {
+            console.log(r.data);
+        })
     }
 
     render() {
@@ -105,7 +114,7 @@ class AppointmentComponent extends Component {
                                         <div className="col-md-12">
                                             <div className="form-group">
                                                 <button id="singlebutton" name="singlebutton"
-                                                        className="btn btn-info">Make An Appointment
+                                                        className="btn btn-info" onClick={this.makeAppointment}>Make An Appointment
                                                 </button>
                                             </div>
                                         </div>

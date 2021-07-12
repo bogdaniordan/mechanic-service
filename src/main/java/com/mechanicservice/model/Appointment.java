@@ -21,7 +21,7 @@ public class Appointment {
     private ServiceType requiredservice;
 
     @Column(name = "date")
-    private LocalDate localDate;
+    private String localDate;
 
     @Column(name = "time")
     private String time;
@@ -32,7 +32,7 @@ public class Appointment {
     @ManyToOne
     private Mechanic mechanic;
 
-    public Appointment(ServiceType requiredservice, LocalDate localDate, String time) {
+    public Appointment(ServiceType requiredservice, String localDate, String time) {
         this.requiredservice = requiredservice;
         this.localDate = localDate;
         this.time = time;
