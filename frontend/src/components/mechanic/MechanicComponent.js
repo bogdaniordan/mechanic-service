@@ -77,7 +77,7 @@ class MechanicComponent extends Component {
                     <option value="BUMPER_REPLACEMENT">BUMPER_REPLACEMENT</option>
                 </select>
                 <div className="row">
-                    <h4>Available mechanics</h4>
+                    <h4>Meet our experts</h4>
                     <table className="table table-striped table-bordered">
                         <thead>
                         <tr>

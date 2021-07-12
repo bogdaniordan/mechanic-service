@@ -23,7 +23,7 @@ public class Service {
     @OneToOne
     private Car car;
 
-//    @OneToOne
+//    @ManyToOne
 //    private Customer customer;
 
     @OneToOne
@@ -47,6 +47,10 @@ public class Service {
 
 //    public void assignCustomer(Customer customer) {
 //        this.customer = customer
+//    }
+
+//    public void assignCustomer(Customer customer) {
+//        this.customer = customer;
 //    }
 
     public void assignMechanic(Mechanic mechanic) {

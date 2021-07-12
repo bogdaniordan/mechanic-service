@@ -8,7 +8,7 @@ class CustomerProfileComponent extends Component {
         this.state = {
             id: "",
             name: "",
-            ownedCar: "",
+            oar: "",
             email: "",
             phoneNumber: "",
             address: "",
@@ -16,7 +16,6 @@ class CustomerProfileComponent extends Component {
             city: "",
             fuel: ""
         }
-        this.assignCarToMechanic = this.assignCarToMechanic.bind(this);
         this.replaceCar = this.replaceCar.bind(this);
     }
 
@@ -31,12 +30,14 @@ class CustomerProfileComponent extends Component {
             CustomerService.getCustomerById(AuthService.getCurrentCustomer().id).then(r => {
 
                 console.log(r.data)
+                console.log(r.data.ownedCar.name)
                 this.setState({id: AuthService.getCurrentCustomer().id})
                 this.setState({phoneNumber: r.data.phoneNumber})
                 this.setState({username: r.data.user.username})
                 this.setState({address: r.data.street})
                 this.setState({city: r.data.city})
-                this.setState({ownedCar: r.data.ownedCar.fuel})
+                this.setState({car: r.data.ownedCar.brandName})
+                this.setState({fuel: r.data.ownedCar.fuel})
             })
 
         }
@@ -46,9 +47,9 @@ class CustomerProfileComponent extends Component {
         this.userLoggedInChecker();
     }
 
-    assignCarToMechanic() {
-        // get user's (customer's) car and assign it to a mechanic - mechanic selected from a dropdown list
-    }
+    // assignCarToMechanic() {
+    //     // get user's (customer's) car and assign it to a mechanic - mechanic selected from a dropdown list
+    // }
 
     replaceCar() {
         this.props.history.push(`/replace-user-car/${this.state.id}`)
@@ -125,7 +126,7 @@ class CustomerProfileComponent extends Component {
                                         <div className="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                                             <div className="form-group">
                                                 <label htmlFor="Street">Car brand</label>
-                                                <p>{this.state.ownedCar.brandName}</p>
+                                                <p>{this.state.car}</p>
                                             </div>
                                         </div>
                                         <div className="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
@@ -138,9 +139,9 @@ class CustomerProfileComponent extends Component {
                                     <div className="row gutters">
                                         <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                                             <div className="text-right">
-                                                <button type="button" id="submit" name="submit"
-                                                        className="btn btn-secondary" onClick={this.assignCarToMechanic}>Assign to mechanic
-                                                </button>
+                                                {/*<button type="button" id="submit" name="submit"*/}
+                                                {/*        className="btn btn-secondary" onClick={this.assignCarToMechanic}>Assign to mechanic*/}
+                                                {/*</button>*/}
                                                 <button type="button" id="submit" name="submit"
                                                         className="btn btn-primary">Update
                                                 </button>
@@ -148,6 +149,7 @@ class CustomerProfileComponent extends Component {
                                             </div>
                                         </div>
                                     </div>
+
                                 </div>
                             </div>
                         </div>

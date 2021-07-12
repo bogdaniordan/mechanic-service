@@ -10,6 +10,8 @@ import LoginComponent from "./components/authentication/LoginComponent";
 import CustomerProfileComponent from "./components/customer/CustomerProfileComponent";
 import LogoutComponent from "./components/authentication/LogoutComponent";
 import ReplaceUserCarComponent from "./components/car/ReplaceUserCarComponent";
+import AppointmentComponent from "./components/car-service/AppointmentComponent";
+import RedirectHomeComponent from "./components/car-service/RedirectHomeComponent";
 
 class App extends Component{
     constructor(props) {
@@ -34,6 +36,8 @@ class App extends Component{
                             <Route path="/logout" component={LogoutComponent}></Route>
                             <Route path="/profile" component={CustomerProfileComponent}></Route>
                             <Route path="/replace-user-car/:id" component={ReplaceUserCarComponent}></Route>
+                            <Route path="/appointment/mechanic/:id" component={AppointmentComponent}></Route>
+                            <Route path="/redirect-home-appointment" component={RedirectHomeComponent}></Route>
                         </Switch>
                     </div>
                 </Router>
