@@ -16,7 +16,7 @@ class RedirectHomeComponent extends Component {
     render() {
         return (
             <div>
-                <p>You don't have any car or your car is already repaired.</p>
+                <p>You don't have any car or your car is already repaired or you don't own this car.</p>
                 <button onClick={this.goHome}>HOME</button>
             </div>
         );

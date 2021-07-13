@@ -8,6 +8,7 @@ class ListCarsComponent extends Component {
         this.state = {
             cars: []
         }
+
         this.repairCar = this.repairCar.bind(this);
         this.makeAppointment = this.makeAppointment.bind(this);
     }
@@ -36,8 +37,8 @@ class ListCarsComponent extends Component {
         })
     }
 
-    makeAppointment() {
-        this.props.history.push('/appointment/mechanic/' + this.props.mechanicId);
+    makeAppointment(carId) {
+        this.props.history.push('/appointment/mechanic/' + this.props.mechanicId + "/" + carId);
     }
 
     render() {
@@ -66,7 +67,7 @@ class ListCarsComponent extends Component {
                                         <td>{car.fuel}</td>
                                         <td>{car.repairedstatus}</td>
                                         <td>{car.requiredservice}</td>
-                                        <td>{car.repairedstatus === "BROKEN" ? (this.props.specialization === car.requiredservice ? <button className="btn-dark" onClick={this.makeAppointment}>MAKE AN APPOINTMENT</button> : <strong>CANNOT REPAIR</strong>) : <strong>REPAIRED</strong>}</td>
+                                        <td>{car.repairedstatus === "BROKEN" ? (this.props.specialization === car.requiredservice ? <button className="btn-dark" onClick={() => this.makeAppointment(car.id)}>MAKE AN APPOINTMENT</button> : <strong>CANNOT REPAIR</strong>) : <strong>REPAIRED</strong>}</td>
 
                                         {/*<td>{car.repairedstatus === "BROKEN" ? (this.props.specialization === car.requiredservice ? <button className="btn-dark" onClick={() => this.repairCar(car.id, car.requiredservice)}>REPAIR</button> : <strong>CANNOT REPAIR</strong>) : <strong>REPAIRED</strong>}</td>*/}
                                     </tr>

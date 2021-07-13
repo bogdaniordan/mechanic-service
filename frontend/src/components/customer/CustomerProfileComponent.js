@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import CustomerService from "../../service/CustomerService";
 import AuthService from "../../service/AuthService";
+import AppointmentService from "../../service/AppointmentService";
 
 class CustomerProfileComponent extends Component {
     constructor(props) {
@@ -14,7 +15,8 @@ class CustomerProfileComponent extends Component {
             address: "",
             username: "",
             city: "",
-            fuel: ""
+            fuel: "",
+            appointment: ""
         }
         this.replaceCar = this.replaceCar.bind(this);
     }
@@ -43,8 +45,23 @@ class CustomerProfileComponent extends Component {
         }
     }
 
+    getAppointment() {
+        AppointmentService.getByCustomerId(AuthService.getCurrentCustomer().id).then(r => {
+            if (!r.data) {
+                return false;
+            } else {
+                this.setState({appointment: r.data})
+                console.log(this.state.appointment)
+                return true;
+            }
+
+
+        })
+    }
+
     componentDidMount() {
         this.userLoggedInChecker();
+        this.getAppointment();
     }
 
     // assignCarToMechanic() {
@@ -56,6 +73,12 @@ class CustomerProfileComponent extends Component {
     }
 
     render() {
+        let appoint;
+        if (this.state.appointment !== "") {
+            appoint = `<div>Appointment at ${this.state.appointment.time}</div>`
+        } else {
+            appoint = '<h4>No appointments scheduled</h4>'
+        }
         return (
             <div>
                 <div className="container">
@@ -154,6 +177,7 @@ class CustomerProfileComponent extends Component {
                             </div>
                         </div>
                     </div>
+                    {appoint}
                 </div>
             </div>
         );

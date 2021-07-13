@@ -17,6 +17,7 @@ class MechanicComponent extends Component {
         this.goToProfile = this.goToProfile.bind(this);
         this.signedInUser = this.signedInUser.bind(this);
         this.filterBySpecialization = this.filterBySpecialization.bind(this);
+        this.login = this.login.bind(this);
     }
 
     refreshMechanics() {
@@ -66,6 +67,10 @@ class MechanicComponent extends Component {
         })
     }
 
+    login() {
+        this.props.history.push("/login");
+    }
+
     render() {
         const user = this.signedInUser();
         return (
@@ -109,6 +114,7 @@ class MechanicComponent extends Component {
                 <br/>
                 <button className="btn btn-primary" onClick={this.addMechanic}>Add mechanic</button>
                 <button className="btn btn-dark" onClick={this.goToProfile}>My profile</button>
+                <button className="btn btn-outline-info" onClick={this.login}>Log in</button>
                 <div>
                     <p>Signed in as: {user.name}</p>
                 </div>

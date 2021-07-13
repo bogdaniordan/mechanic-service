@@ -8,6 +8,7 @@ class AppointmentComponent extends Component {
         super(props);
         this.state = {
             mechanicId: this.props.match.params.mechanicId,
+            carId: this.props.match.params.carId,
             name: "",
             email: "",
             requiredService: "",
@@ -21,13 +22,17 @@ class AppointmentComponent extends Component {
     }
 
     componentDidMount() {
+
         this.setState({name: AuthService.getCurrentCustomer().name})
         this.setState({email: AuthService.getCurrentCustomer}.email)
         CustomerService.getCustomerById(AuthService.getCurrentCustomer().id).then(r => {
             console.log(r.data)
-            if (r.data.ownedCar.repairedstatus !== "BROKEN") {
+
+            // if car is not broken or the selected car is not own by the customer - redirect home
+            if (r.data.ownedCar.repairedstatus !== "BROKEN" || parseInt(r.data.ownedCar.id) !== parseInt(this.state.carId)) {
                 this.props.history.push("/redirect-home-appointment");
             }
+
             this.setState({requiredService: r.data.ownedCar.requiredservice})
             this.setState({car: r.data.ownedCar.brandName})
             this.setState({fuel: r.data.ownedCar.fuel})
@@ -55,6 +60,7 @@ class AppointmentComponent extends Component {
         AppointmentService.createNewAppointment(this.state.mechanicId, AuthService.getCurrentCustomer().id, appointment).then(r => {
             console.log(r.data);
         })
+        this.props.history.push("/");
     }
 
     render() {

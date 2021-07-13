@@ -49,7 +49,7 @@ class MechanicProfile extends Component {
                     </div>
                     <button className="btn btn-success" onClick={() => {this.props.history.push(`/add-car/${this.state.id}`) }}>Create car</button>
                 </div>
-                <ListCarsComponent mechanicId = {this.state.id} specialization = {this.state.mechanic.specialization}/>
+                <ListCarsComponent history={this.props.history} mechanicId = {this.state.id} specialization = {this.state.mechanic.specialization}/>
                 <ServiceComponent mechanicId = {this.state.id}/>
             </div>
         );
