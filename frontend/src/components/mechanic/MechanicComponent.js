@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import MechanicService from "../../service/MechanicService";
 import axios from "axios";
-import AuthHeader from "../../service/AuthHeader";
 import AuthService from "../../service/AuthService";
 
 class MechanicComponent extends Component {

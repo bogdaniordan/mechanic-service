@@ -34,7 +34,9 @@ public class DataGenerator {
         User otherUser = new User("becali", "steaua");
         customer.assignCredentials(user);
         otherCustomer.assignCredentials(otherUser);
+        Testimonial testimonial = new Testimonial(Rating.VERY_SATISFIED, "Nu bate nu troncane sa moaara mama", ServiceType.OIL_CHANGE);
 
+        entityManager.persist(testimonial);
         entityManager.persist(user);
         entityManager.persist(otherUser);
         entityManager.persist(mechanic);

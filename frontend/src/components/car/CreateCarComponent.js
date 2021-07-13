@@ -1,7 +1,5 @@
 import React, {Component} from 'react';
-import MechanicService from "../../service/MechanicService";
 import CarService from "../../service/CarService";
-import ListCarsComponent from "./ListCarsComponent";
 
 class CreateCarComponent extends Component {
     constructor(props) {

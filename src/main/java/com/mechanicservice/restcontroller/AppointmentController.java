@@ -25,4 +25,12 @@ public class AppointmentController {
         Appointment newAppointment = appointmentService.addNewAppointment(appointment, customerId, mechanicId);
         return new ResponseEntity<>(newAppointment, HttpStatus.CREATED);
     }
+
+
+    @GetMapping("/{customerId}")
+    public ResponseEntity<Appointment> getByCustomerId(@PathVariable Long customerId) {
+        log.info("fetching appointment with customer id: " + customerId);
+        Appointment appointment = appointmentService.getAppointmentByCustomerId(customerId);
+        return new ResponseEntity<>(appointment, HttpStatus.OK);
+    }
 }

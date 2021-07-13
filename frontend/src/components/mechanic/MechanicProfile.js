@@ -3,6 +3,7 @@ import MechanicService from "../../service/MechanicService";
 import ListCarsComponent from "../car/ListCarsComponent";
 import ServiceComponent from "../car-service/ServiceComponent";
 import logo from "../resources/sergei.jpg"
+import MechanicTestimonialsComponent from "./MechanicTestimonialsComponent";
 
 class MechanicProfile extends Component {
     constructor(props) {
@@ -51,6 +52,7 @@ class MechanicProfile extends Component {
                 </div>
                 <ListCarsComponent history={this.props.history} mechanicId = {this.state.id} specialization = {this.state.mechanic.specialization}/>
                 <ServiceComponent mechanicId = {this.state.id}/>
+                <MechanicTestimonialsComponent mechanicId = {this.state.id}/>
             </div>
         );
     }
