@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import AuthService from "../../service/AuthService";
 import CustomerService from "../../service/CustomerService";
 import AppointmentService from "../../service/AppointmentService";
+import MechanicService from "../../service/MechanicService";
 
 class AppointmentComponent extends Component {
     constructor(props) {
@@ -9,6 +10,7 @@ class AppointmentComponent extends Component {
         this.state = {
             mechanicId: this.props.match.params.mechanicId,
             carId: this.props.match.params.carId,
+            mechanic: "",
             name: "",
             email: "",
             requiredService: "",
@@ -23,6 +25,7 @@ class AppointmentComponent extends Component {
 
     componentDidMount() {
 
+        this.getMechanic(this.state.mechanicId);
         this.setState({name: AuthService.getCurrentCustomer().name})
         this.setState({email: AuthService.getCurrentCustomer}.email)
         CustomerService.getCustomerById(AuthService.getCurrentCustomer().id).then(r => {
@@ -40,6 +43,13 @@ class AppointmentComponent extends Component {
         if (!AuthService.getCurrentUser()) {
             this.props.history.push("/login")
         }
+    }
+
+    getMechanic(id) {
+        MechanicService.getMechanic(id).then(r => {
+            console.log(r.data)
+            this.setState({mechanic: r.data})
+        })
     }
 
 
@@ -159,6 +169,15 @@ class AppointmentComponent extends Component {
                             </div>
                         </div>
                     </div>
+                </div>
+                Your appointment is with:
+                <div className="card" style={{width:"400px"}}>
+                    {/*<img className="card-img-top" src="img_avatar1.png" alt="Card image"/>*/}
+                        <div className="card-body">
+                            <h4 className="card-title">{this.state.mechanic.name}</h4>
+                            <p className="card-text">Some example text.</p>
+                            <a href="#" className="btn btn-primary">See Profile</a>
+                        </div>
                 </div>
             </div>
         );
