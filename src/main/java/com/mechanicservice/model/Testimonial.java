@@ -23,7 +23,8 @@ public class Testimonial {
     @ManyToOne
     private Car car;
 
-    @Column(name = "receivedservice")
+    @Enumerated(EnumType.STRING)
+    @Column(name = "servicetype")
     private ServiceType serviceType;
 
     @ManyToOne

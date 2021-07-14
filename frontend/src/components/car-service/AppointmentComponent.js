@@ -3,6 +3,8 @@ import AuthService from "../../service/AuthService";
 import CustomerService from "../../service/CustomerService";
 import AppointmentService from "../../service/AppointmentService";
 import MechanicService from "../../service/MechanicService";
+import CarServiceService from "../../service/CarServiceService";
+import CarService from "../../service/CarService";
 
 class AppointmentComponent extends Component {
     constructor(props) {
@@ -61,7 +63,26 @@ class AppointmentComponent extends Component {
         this.setState({date: event.target.value})
     }
 
+    createService() {
+        const service = {
+            date: new Date().getDate(),
+            servicetype: this.state.requiredService
+        }
+        CarServiceService.createNewService(this.state.mechanicId, this.state.carId, AuthService.getCurrentCustomer().id, service).then(r => {
+            console.log(r.data)
+        })
+        this.updateCarRepairStatus(this.state.carId)
+
+    }
+
+    updateCarRepairStatus(id) {
+        CarService.updateCarStatus(id).then(response => {
+        })
+    }
+
     makeAppointment() {
+        // make receipt page with service-price-date-time-car ...
+        // send receipt to email
         const appointment = {
             requiredservice: this.state.requiredService,
             localDate: this.state.date,
@@ -70,6 +91,9 @@ class AppointmentComponent extends Component {
         AppointmentService.createNewAppointment(this.state.mechanicId, AuthService.getCurrentCustomer().id, appointment).then(r => {
             console.log(r.data);
         })
+        //creates the service after the appointment
+        this.createService()
+
         this.props.history.push("/");
     }
 

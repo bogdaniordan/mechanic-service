@@ -26,12 +26,13 @@ public class ServiceController {
         return new ResponseEntity<>(service, HttpStatus.OK);
     }
 
-    @PostMapping("/mechanic/{mechanic-id}/car/{car-id}")
+    @PostMapping("/mechanic/{mechanic-id}/car/{car-id}/customer/{customerId}")
     public ResponseEntity<Service> addNewService(@RequestBody Service newService,
                                                  @PathVariable("car-id") Long carId,
-                                                 @PathVariable("mechanic-id") Long mechanicId) {
+                                                 @PathVariable("mechanic-id") Long mechanicId,
+                                                 @PathVariable Long customerId) {
         log.info("Creating a new car service.");
-        Service service = serviceService.createNewCarService(newService, carId, mechanicId);
+        Service service = serviceService.createNewCarService(newService, carId, mechanicId, customerId);
         return new ResponseEntity<>(service, HttpStatus.CREATED);
     }
 
@@ -40,6 +41,14 @@ public class ServiceController {
     public ResponseEntity<List<Service>> getAllServices(@PathVariable Long mechanicId) {
         log.info("Fetching all car services.");
         List<Service> services = serviceService.getAllByMechanicId(mechanicId);
+        return new ResponseEntity<>(services, HttpStatus.OK);
+    }
+
+
+    @GetMapping("/services-by-customer/{customerId}")
+    public ResponseEntity<List<Service>> getAllServicesByCustomer(@PathVariable Long customerId) {
+        log.info("fetching services with customer id: " + customerId);
+        List<Service> services = serviceService.getByCustomerId(customerId);
         return new ResponseEntity<>(services, HttpStatus.OK);
     }
 

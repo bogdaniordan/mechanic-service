@@ -20,14 +20,14 @@ class ListCarsComponent extends Component {
     }
 
     repairCar(carId, serviceType) {
-        const service = {
-            date: new Date().getDate(),
-            servicetype: serviceType
-        }
-        console.log(service);
-        CarServiceService.createNewService(this.props.mechanicId, carId, service).then(r => {
-
-        })
+        // const service = {
+        //     date: new Date().getDate(),
+        //     servicetype: serviceType
+        // }
+        // console.log(service);
+        // CarServiceService.createNewService(this.props.mechanicId, carId, service).then(r => {
+        //
+        // })
         this.updateCarRepairStatus(carId)
     }
 

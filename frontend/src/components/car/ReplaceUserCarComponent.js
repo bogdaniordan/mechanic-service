@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import CarService from "../../service/CarService";
+import AuthService from "../../service/AuthService";
 
 class ReplaceUserCarComponent extends Component {
     constructor(props) {
@@ -26,7 +27,7 @@ class ReplaceUserCarComponent extends Component {
             repairedstatus: "BROKEN",
             requiredservice: this.state.requiredService
         }
-        CarService.replaceCustomerCar(this.state.customerId, car).then(response => {
+        CarService.replaceCustomerCar(AuthService.getCurrentCustomer().id, car).then(response => {
             console.log(car)
             this.cancel();
         });

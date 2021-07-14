@@ -10,8 +10,9 @@ class CarServiceService {
         return axios.get(CAR_SERVICE_API_URL + "/" + id, { headers: AuthHeader() });
     }
 
-    createNewService(mechanicId, carId, service) {
-        return axios.post(CAR_SERVICE_API_URL + "/mechanic/" + mechanicId + "/car/" + carId, service, { headers: AuthHeader() })
+    createNewService(mechanicId, carId, customerId, service) {
+        return axios.post(CAR_SERVICE_API_URL + "/mechanic/" + mechanicId + "/car/" + carId + "/customer/" +
+            customerId, service, { headers: AuthHeader() })
     }
 
     getAllServices() {
@@ -20,6 +21,10 @@ class CarServiceService {
 
     getServicesByMechanicId(id) {
         return axios.get(CAR_SERVICE_API_URL + "/services-by-mechanic-id/" + id, { headers: AuthHeader() });
+    }
+
+    getServicesByCustomerId(id) {
+        return axios.get(CAR_SERVICE_API_URL + "/services-by-customer/" + id, { headers: AuthHeader() })
     }
 
 }

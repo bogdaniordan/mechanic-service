@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import CustomerService from "../../service/CustomerService";
 import AuthService from "../../service/AuthService";
 import AppointmentService from "../../service/AppointmentService";
+import ReceivedServicesComponent from "../car-service/ReceivedServicesComponent";
 
 class CustomerProfileComponent extends Component {
     constructor(props) {
@@ -60,6 +61,7 @@ class CustomerProfileComponent extends Component {
     }
 
     componentDidMount() {
+        // console.log(AuthService.getCurrentCustomer())
         this.userLoggedInChecker();
         this.getAppointment();
     }
@@ -178,6 +180,7 @@ class CustomerProfileComponent extends Component {
                         </div>
                     </div>
                     {appoint}
+                    <ReceivedServicesComponent />
                 </div>
             </div>
         );
