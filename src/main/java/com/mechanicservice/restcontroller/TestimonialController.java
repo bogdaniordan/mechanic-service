@@ -24,7 +24,6 @@ public class TestimonialController {
     public ResponseEntity<List<Testimonial>> getTestimonialsByMechanic(@PathVariable Long mechanicId) {
         log.info("Fetching testimonials for mechanic with id: " + mechanicId);
         List<Testimonial> testimonials = testimonialService.getTestimonialsByMechanic(mechanicId);
-        Long s = new Long(2);
         return new ResponseEntity<>(testimonials, HttpStatus.OK);
     }
 

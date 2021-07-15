@@ -180,7 +180,7 @@ class CustomerProfileComponent extends Component {
                         </div>
                     </div>
                     {appoint}
-                    <ReceivedServicesComponent />
+                    <ReceivedServicesComponent history={this.props.history} />
                 </div>
             </div>
         );
