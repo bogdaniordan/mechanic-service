@@ -27,4 +27,14 @@ public class TestimonialController {
         return new ResponseEntity<>(testimonials, HttpStatus.OK);
     }
 
+    @PostMapping("/create-testimonial/{mechanicId}/{customerId}/{carId}")
+    public ResponseEntity<Testimonial> addNewTestimonial(@RequestBody Testimonial testimonial,
+                                                         @PathVariable Long carId,
+                                                         @PathVariable Long customerId,
+                                                         @PathVariable Long mechanicId) {
+        log.info("Adding a new testimonial.");
+        Testimonial newTestimonial = testimonialService.addTestimonial(testimonial, carId, customerId, mechanicId);
+        return new ResponseEntity<>(newTestimonial, HttpStatus.CREATED);
+    }
+
 }

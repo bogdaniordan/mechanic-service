@@ -18,8 +18,8 @@ class ReceivedServicesComponent extends Component {
         })
     }
 
-    leaveTestimonial(mechanicId, serviceType) {
-        this.props.history.push(`/testimonial/${mechanicId}/${serviceType}`)
+    leaveTestimonial(mechanicId, serviceType, carId) {
+        this.props.history.push(`/testimonial/${mechanicId}/${serviceType}/${carId}`)
     }
 
     render() {
@@ -41,7 +41,7 @@ class ReceivedServicesComponent extends Component {
                                                 <h2 className="text-right"><i
                                                     className="fa fa-cart-plus f-left"></i><span>Duration: {service.car.requiredservice === service.mechanic.specialization ?  "2 days" : "7 days"}</span></h2>
                                                 <p className="m-b-0">Date<span className="f-right">{service.date}</span></p>
-                                                <button className="btn btn-info" onClick={() => this.leaveTestimonial(service.mechanic.id, service.servicetype)}>Leave testimonial</button>
+                                                <button className="btn btn-info" onClick={() => this.leaveTestimonial(service.mechanic.id, service.servicetype, service.car.id)}>Leave testimonial</button>
                                             </div>
                                         </div>
                                     </div>
