@@ -1,6 +1,8 @@
 package com.mechanicservice.restcontroller;
 
 import com.mechanicservice.model.Service;
+import com.mechanicservice.model.ServiceType;
+import com.mechanicservice.model.ServiceTypeDTO;
 import com.mechanicservice.service.ServiceService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,6 +10,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @CrossOrigin(origins = "http://localhost:3000")
@@ -50,6 +53,15 @@ public class ServiceController {
         log.info("fetching services with customer id: " + customerId);
         List<Service> services = serviceService.getByCustomerId(customerId);
         return new ResponseEntity<>(services, HttpStatus.OK);
+    }
+
+    @GetMapping("/get-service-types")
+    public ResponseEntity<List<ServiceTypeDTO>> getAllServiceTypes() {
+        List<ServiceTypeDTO> serviceTypeDTOS = new ArrayList<>();
+        for (ServiceType serviceType: ServiceType.values()) {
+            serviceTypeDTOS.add(new ServiceTypeDTO(serviceType));
+        }
+        return new ResponseEntity<>(serviceTypeDTOS, HttpStatus.OK);
     }
 
 }

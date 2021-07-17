@@ -2,6 +2,10 @@ import React, {Component} from 'react';
 import MechanicService from "../../service/MechanicService";
 import axios from "axios";
 import AuthService from "../../service/AuthService";
+import {Navbar} from "react-bootstrap";
+import {Container} from "react-bootstrap";
+import {Nav} from "react-bootstrap";
+import FooterComponent from "../car-service/FooterComponent";
 
 class MechanicComponent extends Component {
     constructor(props) {
@@ -13,11 +17,16 @@ class MechanicComponent extends Component {
         this.refreshMechanics = this.refreshMechanics.bind(this)
         this.addMechanic = this.addMechanic.bind(this);
         this.viewMechanic = this.viewMechanic.bind(this);
-        this.goToProfile = this.goToProfile.bind(this);
+        // this.goToProfile = this.goToProfile.bind(this);
         this.signedInUser = this.signedInUser.bind(this);
         this.filterBySpecialization = this.filterBySpecialization.bind(this);
-        this.login = this.login.bind(this);
+        // this.login = this.login.bind(this);
+        // this.logout = this.logout.bind(this);
     }
+
+    // logout() {
+    //     this.props.history.push("/logout");
+    // }
 
     refreshMechanics() {
         MechanicService.getAllMechanics().then((response) => {
@@ -46,9 +55,9 @@ class MechanicComponent extends Component {
         this.props.history.push(`/mechanic/${id}`);
     }
 
-    goToProfile() {
-        this.props.history.push("/profile")
-    }
+    // goToProfile() {
+    //     this.props.history.push("/profile")
+    // }
 
     signedInUser() {
         let user;
@@ -66,14 +75,27 @@ class MechanicComponent extends Component {
         })
     }
 
-    login() {
-        this.props.history.push("/login");
-    }
+    // login() {
+    //     this.props.history.push("/login");
+    // }
 
     render() {
         const user = this.signedInUser();
         return (
             <div>
+                <Navbar bg="dark" variant="dark">
+                    <Container>
+                        <Navbar.Brand href="/profile">My profile</Navbar.Brand>
+                        <Nav className="me-auto">
+                            <Nav.Link href="/add-mechanic">Add mechanic</Nav.Link>
+                            {AuthService.getCurrentCustomer() ?  <Nav.Link href="/logout">Logout</Nav.Link> :  <Nav.Link href="/login">Log in</Nav.Link>}
+                            <Nav.Link href="/services">Services</Nav.Link>
+                        </Nav>
+                        <Navbar.Text>
+                            Signed in as: <a href="#">{user.name}</a>
+                        </Navbar.Text>
+                    </Container>
+                </Navbar>
                 Filter by:
                 <select className="form-select form-select-sm" aria-label=".form-select-sm example" onChange={this.filterBySpecialization}>
                     <option value="OIL_CHANGE">OIL_CHANGE</option>
@@ -111,12 +133,13 @@ class MechanicComponent extends Component {
                     </table>
                 </div>
                 <br/>
-                <button className="btn btn-primary" onClick={this.addMechanic}>Add mechanic</button>
-                <button className="btn btn-dark" onClick={this.goToProfile}>My profile</button>
-                <button className="btn btn-outline-info" onClick={this.login}>Log in</button>
-                <div>
-                    <p>Signed in as: {user.name}</p>
-                </div>
+                {/*<button className="btn btn-primary" onClick={this.addMechanic}>Add mechanic</button>*/}
+                {/*<button className="btn btn-dark" onClick={this.goToProfile}>My profile</button>*/}
+                {/*{AuthService.getCurrentCustomer() ? <button className="btn btn-outline-info" onClick={this.logout}>Log out</button> : <button className="btn btn-outline-info" onClick={this.login}>Log in</button>}*/}
+                {/*<div>*/}
+                {/*    <p>Signed in as: {user.name}</p>*/}
+                {/*</div>*/}
+                {FooterComponent}
             </div>
         );
     }

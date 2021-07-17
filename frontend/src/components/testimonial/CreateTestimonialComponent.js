@@ -1,4 +1,6 @@
 import React, {Component} from 'react';
+import TestimonialsService from "../../service/TestimonialsService";
+import AuthService from "../../service/AuthService";
 
 class CreateTestimonialComponent extends Component {
     constructor(props) {
@@ -12,6 +14,7 @@ class CreateTestimonialComponent extends Component {
         }
         this.setComment = this.setComment.bind(this);
         this.setRating = this.setRating.bind(this);
+        this.saveTestimonial = this.saveTestimonial.bind(this);
     }
 
     componentDidMount() {
@@ -23,14 +26,24 @@ class CreateTestimonialComponent extends Component {
         this.setState({comment: event.target.value})
     }
 
-
-
     setRating = (event) => {
         this.setState({rating: event.target.value})
     }
 
     cancel() {
         this.props.history.push("/")
+    }
+
+    saveTestimonial() {
+        const testimonial = {
+            rating: this.state.rating,
+            comment: this.state.comment,
+            serviceType: this.state.requiredService
+        }
+        TestimonialsService.addTestimonial(testimonial, this.state.carId, AuthService.getCurrentCustomer().id, this.state.mechanicId).then(r => {
+            console.log(r.data);
+        })
+        this.props.history.push("/profile");
     }
 
     render() {
@@ -60,7 +73,7 @@ class CreateTestimonialComponent extends Component {
                                         </label>
                                     </div>
                                     <br/>
-                                    {/*<button className="btn btn-success" onClick={this.saveCar}>Save</button>*/}
+                                    <button className="btn btn-success" onClick={this.saveTestimonial}>Save</button>
                                     <button className="btn btn-danger" onClick={this.cancel.bind(this)} style={{marginLeft: "10px"}}>Cancel</button>
                                 </form>
                             </div>

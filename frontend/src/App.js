@@ -13,6 +13,7 @@ import ReplaceUserCarComponent from "./components/car/ReplaceUserCarComponent";
 import AppointmentComponent from "./components/car-service/AppointmentComponent";
 import RedirectHomeComponent from "./components/car-service/RedirectHomeComponent";
 import CreateTestimonialComponent from "./components/testimonial/CreateTestimonialComponent";
+import AllServicesComponent from "./components/car-service/AllServicesComponent";
 
 class App extends Component{
     constructor(props) {
@@ -39,6 +40,7 @@ class App extends Component{
                             <Route path="/appointment/mechanic/:mechanicId/:carId" component={AppointmentComponent}></Route>
                             <Route path="/redirect-home-appointment" component={RedirectHomeComponent}></Route>
                             <Route path="/testimonial/:mechanicId/:requiredService/:carId" component={CreateTestimonialComponent}></Route>
+                            <Route path="/services" component={AllServicesComponent}></Route>
                         </Switch>
                     </div>
                 </Router>

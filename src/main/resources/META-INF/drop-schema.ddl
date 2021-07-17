@@ -4386,3 +4386,187 @@
     drop table if exists user_credentials cascade
 
     drop sequence if exists hibernate_sequence
+
+    alter table if exists appointment 
+       drop constraint if exists FKmyowslj1th8d9j6j3wlbwrtoe
+
+    alter table if exists appointment 
+       drop constraint if exists FKnc61twmcjp2rkmflchkq0hlvy
+
+    alter table if exists customer 
+       drop constraint if exists FKmfjfudsedybibx28cmjhxtb4
+
+    alter table if exists customer 
+       drop constraint if exists FK78pio25qdho8j6h0eqvy1fli2
+
+    alter table if exists service 
+       drop constraint if exists FKnrrevpm4otovp3e6jvpmao4e1
+
+    alter table if exists service 
+       drop constraint if exists FKtyjijsa87ahcfvy495nhugo1
+
+    alter table if exists service 
+       drop constraint if exists FK8x8qehjum64psba3xtty9akt1
+
+    alter table if exists testimonial 
+       drop constraint if exists FKkfcbbasgga0sp5olk2e8sxf63
+
+    alter table if exists testimonial 
+       drop constraint if exists FKdcstei5dt6qwdh5d8x0nardpe
+
+    alter table if exists testimonial 
+       drop constraint if exists FK3jqpx012hybud43221rxroqrl
+
+    drop table if exists appointment cascade
+
+    drop table if exists car cascade
+
+    drop table if exists customer cascade
+
+    drop table if exists mechanic cascade
+
+    drop table if exists service cascade
+
+    drop table if exists testimonial cascade
+
+    drop table if exists user_credentials cascade
+
+    drop sequence if exists hibernate_sequence
+
+    alter table if exists appointment 
+       drop constraint if exists FKmyowslj1th8d9j6j3wlbwrtoe
+
+    alter table if exists appointment 
+       drop constraint if exists FKnc61twmcjp2rkmflchkq0hlvy
+
+    alter table if exists customer 
+       drop constraint if exists FKmfjfudsedybibx28cmjhxtb4
+
+    alter table if exists customer 
+       drop constraint if exists FK78pio25qdho8j6h0eqvy1fli2
+
+    alter table if exists service 
+       drop constraint if exists FKnrrevpm4otovp3e6jvpmao4e1
+
+    alter table if exists service 
+       drop constraint if exists FKtyjijsa87ahcfvy495nhugo1
+
+    alter table if exists service 
+       drop constraint if exists FK8x8qehjum64psba3xtty9akt1
+
+    alter table if exists testimonial 
+       drop constraint if exists FKkfcbbasgga0sp5olk2e8sxf63
+
+    alter table if exists testimonial 
+       drop constraint if exists FKdcstei5dt6qwdh5d8x0nardpe
+
+    alter table if exists testimonial 
+       drop constraint if exists FK3jqpx012hybud43221rxroqrl
+
+    drop table if exists appointment cascade
+
+    drop table if exists car cascade
+
+    drop table if exists customer cascade
+
+    drop table if exists mechanic cascade
+
+    drop table if exists service cascade
+
+    drop table if exists testimonial cascade
+
+    drop table if exists user_credentials cascade
+
+    drop sequence if exists hibernate_sequence
+
+    alter table if exists appointment 
+       drop constraint if exists FKmyowslj1th8d9j6j3wlbwrtoe
+
+    alter table if exists appointment 
+       drop constraint if exists FKnc61twmcjp2rkmflchkq0hlvy
+
+    alter table if exists customer 
+       drop constraint if exists FKmfjfudsedybibx28cmjhxtb4
+
+    alter table if exists customer 
+       drop constraint if exists FK78pio25qdho8j6h0eqvy1fli2
+
+    alter table if exists service 
+       drop constraint if exists FKnrrevpm4otovp3e6jvpmao4e1
+
+    alter table if exists service 
+       drop constraint if exists FKtyjijsa87ahcfvy495nhugo1
+
+    alter table if exists service 
+       drop constraint if exists FK8x8qehjum64psba3xtty9akt1
+
+    alter table if exists testimonial 
+       drop constraint if exists FKkfcbbasgga0sp5olk2e8sxf63
+
+    alter table if exists testimonial 
+       drop constraint if exists FKdcstei5dt6qwdh5d8x0nardpe
+
+    alter table if exists testimonial 
+       drop constraint if exists FK3jqpx012hybud43221rxroqrl
+
+    drop table if exists appointment cascade
+
+    drop table if exists car cascade
+
+    drop table if exists customer cascade
+
+    drop table if exists mechanic cascade
+
+    drop table if exists service cascade
+
+    drop table if exists testimonial cascade
+
+    drop table if exists user_credentials cascade
+
+    drop sequence if exists hibernate_sequence
+
+    alter table if exists appointment 
+       drop constraint if exists FKmyowslj1th8d9j6j3wlbwrtoe
+
+    alter table if exists appointment 
+       drop constraint if exists FKnc61twmcjp2rkmflchkq0hlvy
+
+    alter table if exists customer 
+       drop constraint if exists FKmfjfudsedybibx28cmjhxtb4
+
+    alter table if exists customer 
+       drop constraint if exists FK78pio25qdho8j6h0eqvy1fli2
+
+    alter table if exists service 
+       drop constraint if exists FKnrrevpm4otovp3e6jvpmao4e1
+
+    alter table if exists service 
+       drop constraint if exists FKtyjijsa87ahcfvy495nhugo1
+
+    alter table if exists service 
+       drop constraint if exists FK8x8qehjum64psba3xtty9akt1
+
+    alter table if exists testimonial 
+       drop constraint if exists FKkfcbbasgga0sp5olk2e8sxf63
+
+    alter table if exists testimonial 
+       drop constraint if exists FKdcstei5dt6qwdh5d8x0nardpe
+
+    alter table if exists testimonial 
+       drop constraint if exists FK3jqpx012hybud43221rxroqrl
+
+    drop table if exists appointment cascade
+
+    drop table if exists car cascade
+
+    drop table if exists customer cascade
+
+    drop table if exists mechanic cascade
+
+    drop table if exists service cascade
+
+    drop table if exists testimonial cascade
+
+    drop table if exists user_credentials cascade
+
+    drop sequence if exists hibernate_sequence

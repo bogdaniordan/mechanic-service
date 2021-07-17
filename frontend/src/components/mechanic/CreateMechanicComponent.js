@@ -67,7 +67,6 @@ class CreateMechanicComponent extends Component {
                                                    value={this.state.specialization} onChange={this.setSpecialization}/>
                                         </label>
                                     </div>
-
                                     <br/>
                                     <button className="btn btn-success" onClick={this.saveMechanic}>Save</button>
                                     <button className="btn btn-danger" onClick={this.cancel.bind(this)} style={{marginLeft: "10px"}}>Cancel</button>
