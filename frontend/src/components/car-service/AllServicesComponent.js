@@ -20,7 +20,7 @@ class AllServicesComponent extends Component {
     render() {
         return (
             <div>
-                The services we offer:
+                <h3>The services we offer:</h3>
                 {
                     this.state.services.map(
                         service =>
@@ -29,8 +29,7 @@ class AllServicesComponent extends Component {
                                 <Card.ImgOverlay>
                                     <Card.Title>{service.serviceType}</Card.Title>
                                     <Card.Text>
-                                        This is a wider card with supporting text below as a natural lead-in to
-                                        additional content. This content is a little bit longer.
+                                        {service.description}
                                     </Card.Text>
                                     <Card.Text>Price: {service.price} EURO</Card.Text>
                                 </Card.ImgOverlay>

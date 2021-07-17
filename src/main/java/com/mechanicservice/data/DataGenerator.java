@@ -17,7 +17,7 @@ public class DataGenerator {
     public void populateDb() {
         EntityTransaction transaction = entityManager.getTransaction();
         transaction.begin();
-        Mechanic mechanic =  new Mechanic("Nea Mihai", ServiceType.ENGINE_REPAIR);
+        Mechanic mechanic =  new Mechanic("Nea Marin", ServiceType.ENGINE_REPAIR);
         Mechanic mechanic1 =  new Mechanic("Nea Bebe", ServiceType.ENGINE_REPAIR);
         Mechanic mechanic2 =  new Mechanic("Nea Mircea", ServiceType.OIL_CHANGE);
         Mechanic mechanic3 =  new Mechanic("Nea Dani", ServiceType.BUMPER_REPLACEMENT);
@@ -28,7 +28,8 @@ public class DataGenerator {
         customer.assignCar(car);
         Service service = new Service(ServiceType.ENGINE_REPAIR, new Date());
         service.assignCar(car);
-        mechanic.addPicture("frontend/src/components/resources/sergei.jpg");
+        mechanic.addPicture("https://thumbor.unica.ro/unsafe/980x600/smart/filters:contrast(1):quality(80)/https://tvmania.ro/wp-content/uploads/2020/12/Nea-Marin-1.jpg");
+        mechanic1.addPicture("https://agrointel.ro/wp-content/uploads/2016/07/Adrian-Porumboiu-a-vandut-Comcereal.jpg");
         service.assignMechanic(mechanic);
         User user = new User("bogdan", "1234");
         User otherUser = new User("becali", "steaua");

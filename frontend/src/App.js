@@ -1,5 +1,5 @@
 import './App.css';
-import MechanicComponent from "./components/mechanic/MechanicComponent"
+import HomeComponent from "./components/mechanic/HomeComponent"
 import {BrowserRouter as Router, Route, Switch}from 'react-router-dom'
 import CreateMechanicComponent from "./components/mechanic/CreateMechanicComponent";
 import UpdateMechanicComponent from "./components/mechanic/UpdateMechanicComponent";
@@ -14,6 +14,10 @@ import AppointmentComponent from "./components/car-service/AppointmentComponent"
 import RedirectHomeComponent from "./components/car-service/RedirectHomeComponent";
 import CreateTestimonialComponent from "./components/testimonial/CreateTestimonialComponent";
 import AllServicesComponent from "./components/car-service/AllServicesComponent";
+// import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
+import "./index.css";
+
+
 
 class App extends Component{
     constructor(props) {
@@ -28,7 +32,7 @@ class App extends Component{
                 <Router>
                     <div className="container">
                         <Switch>
-                            <Route path="/" exact component={MechanicComponent} ></Route>
+                            <Route path="/" exact component={HomeComponent} ></Route>
                             <Route path="/add-mechanic" component = {CreateMechanicComponent}></Route>
                             <Route path="/update-mechanic/:id" component = {UpdateMechanicComponent}></Route>
                             <Route path="/mechanic/:id" component = {MechanicProfile}></Route>

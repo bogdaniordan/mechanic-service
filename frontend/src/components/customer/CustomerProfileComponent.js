@@ -10,7 +10,7 @@ class CustomerProfileComponent extends Component {
         this.state = {
             id: "",
             name: "",
-            oar: "",
+            car: "",
             email: "",
             phoneNumber: "",
             address: "",
@@ -40,7 +40,7 @@ class CustomerProfileComponent extends Component {
                 this.setState({username: r.data.user.username})
                 this.setState({address: r.data.street})
                 this.setState({city: r.data.city})
-                this.setState({car: r.data.ownedCar.brandName})
+                this.setState({car: r.data.ownedCar})
                 this.setState({fuel: r.data.ownedCar.fuel})
                 this.setState({picture: r.data.picture})
             })
@@ -79,9 +79,9 @@ class CustomerProfileComponent extends Component {
     render() {
         let appoint;
         if (this.state.appointment !== "") {
-            appoint = `<div>Appointment at ${this.state.appointment.time}</div>`
+            appoint = `Appointment at ${this.state.appointment.time} on ${this.state.appointment.localDate}`
         } else {
-            appoint = '<h4>No appointments scheduled</h4>'
+            appoint = 'No appointments scheduled'
         }
         return (
             <div>
@@ -153,13 +153,19 @@ class CustomerProfileComponent extends Component {
                                         <div className="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                                             <div className="form-group">
                                                 <label htmlFor="Street">Car brand</label>
-                                                <p>{this.state.car}</p>
+                                                <p>{this.state.car.brandName}</p>
                                             </div>
                                         </div>
                                         <div className="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                                             <div className="form-group">
                                                 <label htmlFor="ciTy">Fuel type</label>
                                                 <p>{this.state.fuel}</p>
+                                            </div>
+                                        </div>
+                                        <div className="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                            <div className="form-group">
+                                                <label htmlFor="ciTy">Car status</label>
+                                                <p>{this.state.car.repairedstatus}</p>
                                             </div>
                                         </div>
                                     </div>

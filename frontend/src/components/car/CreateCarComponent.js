@@ -78,6 +78,7 @@ class CreateCarComponent extends Component {
                                                 <option value="ENGINE_REPAIR">ENGINE_REPAIR</option>
                                                 <option value="OIL_CHANGE">OIL_CHANGE</option>
                                                 <option value="BUMPER_REPLACEMENT">BUMPER_REPLACEMENT</option>
+                                                <option value="SAFETY_CHECK">SAFETY_CHECK</option>
                                             </select>
                                         </label>
                                     </div>

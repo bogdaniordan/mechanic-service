@@ -4,6 +4,7 @@ import AuthService from "../../service/AuthService";
 import CustomerService from "../../service/CustomerService";
 import AuthHeader from "../../service/AuthHeader";
 
+
 class LoginComponent extends Component {
     constructor(props) {
         super(props);
@@ -68,12 +69,22 @@ class LoginComponent extends Component {
     render() {
         return (
             <div>
-                <p>User</p>
-                <input name="username" onChange={this.setUserName}/>
-                <p>Password</p>
-                <input name="password" onChange={this.setPassword}/>
-                <button onClick={this.login}>btn</button>
-                {/*<p ref="wrong" style={{display: "none"}}>Wrong username or password!</p>*/}
+                <form>
+
+                    <h3>Log in</h3>
+
+                    <div className="form-group">
+                        <label>Email</label>
+                        <input type="email" className="form-control" placeholder="Enter email" onChange={this.setUserName}/>
+                    </div>
+
+                    <div className="form-group">
+                        <label>Password</label>
+                        <input type="password" className="form-control" placeholder="Enter password" onChange={this.setPassword}/>
+                    </div>
+
+                    <button type="submit" className="btn btn-dark btn-lg btn-block" onClick={this.login}>Sign in</button>
+                </form>
             </div>
         );
     }
