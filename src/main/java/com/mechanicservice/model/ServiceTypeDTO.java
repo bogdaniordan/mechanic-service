@@ -9,6 +9,7 @@ public class ServiceTypeDTO {
 
     private ServiceType serviceType;
     private String pictureURL;
+    private int price;
 
     public ServiceTypeDTO(ServiceType serviceType) {
         serviceTypeToDTO(serviceType);
@@ -17,5 +18,6 @@ public class ServiceTypeDTO {
     public void serviceTypeToDTO(ServiceType serviceType) {
         this.serviceType = serviceType;
         pictureURL = serviceType.pictureURL;
+        price = serviceType.price;
     }
 }

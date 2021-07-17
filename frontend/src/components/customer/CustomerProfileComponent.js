@@ -17,7 +17,8 @@ class CustomerProfileComponent extends Component {
             username: "",
             city: "",
             fuel: "",
-            appointment: ""
+            appointment: "",
+            picture: ""
         }
         this.replaceCar = this.replaceCar.bind(this);
     }
@@ -41,6 +42,7 @@ class CustomerProfileComponent extends Component {
                 this.setState({city: r.data.city})
                 this.setState({car: r.data.ownedCar.brandName})
                 this.setState({fuel: r.data.ownedCar.fuel})
+                this.setState({picture: r.data.picture})
             })
 
         }
@@ -91,7 +93,7 @@ class CustomerProfileComponent extends Component {
                                     <div className="account-settings">
                                         <div className="user-profile">
                                             <div className="user-avatar">
-                                                <img src="https://bootdey.com/img/Content/avatar/avatar7.png"
+                                                <img width="250px" height="350px" src={this.state.picture}
                                                      alt="Maxwell Admin"/>
                                             </div>
                                             <h5 className="user-name">{this.state.name}</h5>

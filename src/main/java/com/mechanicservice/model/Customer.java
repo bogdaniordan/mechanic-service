@@ -38,12 +38,16 @@ public class Customer {
     @Column(name = "city")
     private String city;
 
-    public Customer(String name, String email, String phoneNumber, String street, String city) {
+    @Column(name = "picture")
+    private String picture;
+
+    public Customer(String name, String email, String phoneNumber, String street, String city, String picture) {
         this.name = name;
         this.email = email;
         this.phoneNumber = phoneNumber;
         this.street = street;
         this.city = city;
+        this.picture = picture;
     }
 
     public void assignCar(Car ownedCar) {
