@@ -16,6 +16,8 @@ import CreateTestimonialComponent from "./components/testimonial/CreateTestimoni
 import AllServicesComponent from "./components/car-service/AllServicesComponent";
 // import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import "./index.css";
+import CardDetailsComponent from "./components/payment/CardDetailsComponent";
+import UpdateCustomerComponent from "./components/customer/UpdateCustomerComponent";
 
 
 
@@ -45,6 +47,8 @@ class App extends Component{
                             <Route path="/redirect-home-appointment" component={RedirectHomeComponent}></Route>
                             <Route path="/testimonial/:mechanicId/:requiredService/:carId" component={CreateTestimonialComponent}></Route>
                             <Route path="/services" component={AllServicesComponent}></Route>
+                            <Route path="/payment/:customerId" component={CardDetailsComponent}></Route>
+                            <Route path="/update-customer-details/:customerId" component={UpdateCustomerComponent}></Route>
                         </Switch>
                     </div>
                 </Router>

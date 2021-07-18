@@ -17,6 +17,10 @@ class CustomerService {
     getCustomerById(id) {
         return axios.get(CUSTOMER_SERVICE_API_URL + "/" + id, { headers: AuthHeader() } )
     }
+
+    updateCustomerDetails(updatedCustomer, id) {
+        return axios.put(`${CUSTOMER_SERVICE_API_URL}/update-customer-details/${id}`, updatedCustomer, { headers: AuthHeader() } )
+    }
 }
 
 export default new CustomerService();

@@ -82,7 +82,7 @@ public class CustomerController {
     public ResponseEntity<Customer> updateCustomerDetails(@RequestBody Customer customer, @PathVariable Long customerId) {
         log.info("Updating customer with id: " + customerId);
         Customer updatedCustomer = customerService.updateCustomer(customer, customerId);
-        return new ResponseEntity<>(updatedCustomer, HttpStatus.OK)
+        return new ResponseEntity<>(updatedCustomer, HttpStatus.OK);
     }
 
 }

@@ -21,6 +21,11 @@ class CustomerProfileComponent extends Component {
             picture: ""
         }
         this.replaceCar = this.replaceCar.bind(this);
+        this.updateDetails = this.updateDetails.bind(this);
+    }
+
+    updateDetails() {
+        this.props.history.push(`/update-customer-details/${AuthService.getCurrentCustomer().id}`)
     }
 
     userLoggedInChecker() {
@@ -176,7 +181,7 @@ class CustomerProfileComponent extends Component {
                                                 {/*        className="btn btn-secondary" onClick={this.assignCarToMechanic}>Assign to mechanic*/}
                                                 {/*</button>*/}
                                                 <button type="button" id="submit" name="submit"
-                                                        className="btn btn-primary">Update
+                                                        className="btn btn-primary" onClick={this.updateDetails}>Update
                                                 </button>
                                                 <button type="button" id="submit" name = "submit" className="btn btn-success" onClick={this.replaceCar}>Replace car</button>
                                             </div>

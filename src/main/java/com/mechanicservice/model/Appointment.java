@@ -20,6 +20,9 @@ public class Appointment {
     @Enumerated(EnumType.STRING)
     private ServiceType requiredservice;
 
+    @Column(name = "price")
+    private int price;
+
     @Column(name = "date")
     private String localDate;
 
@@ -36,6 +39,7 @@ public class Appointment {
         this.requiredservice = requiredservice;
         this.localDate = localDate;
         this.time = time;
+        price = requiredservice.price;
     }
 
     public void assignCustomer(Customer customer) {
