@@ -41,6 +41,9 @@ public class Customer {
     @Column(name = "picture")
     private String picture;
 
+    @OneToOne
+    private CardDetails cardDetails;
+
     public Customer(String name, String email, String phoneNumber, String street, String city, String picture) {
         this.name = name;
         this.email = email;

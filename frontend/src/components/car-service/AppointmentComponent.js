@@ -94,7 +94,7 @@ class AppointmentComponent extends Component {
         //creates the service after the appointment
         this.createService()
 
-        this.props.history.push("/");
+        this.props.history.push(`/payment/${AuthService.getCurrentCustomer().id}`);
     }
 
     render() {

@@ -1,9 +1,11 @@
 package com.mechanicservice.service;
 
 import com.mechanicservice.model.Car;
+import com.mechanicservice.model.CardDetails;
 import com.mechanicservice.model.User;
 import com.mechanicservice.model.Customer;
 import com.mechanicservice.repository.CarRepository;
+import com.mechanicservice.repository.CardDetailsRepository;
 import com.mechanicservice.repository.CustomerRepository;
 import com.mechanicservice.repository.UserRepository;
 import org.apache.velocity.exception.ResourceNotFoundException;
@@ -23,6 +25,9 @@ public class CustomerService {
 
     @Autowired
     private UserRepository userRepository;
+
+    @Autowired
+    private CardDetailsRepository cardDetailsRepository;
 
     public List<Customer> getAllCustomers() {
         return customerRepository.findAll();
@@ -73,5 +78,13 @@ public class CustomerService {
         customerToUpdate.setCity(customer.getCity());
         customerToUpdate.setStreet(customer.getStreet());
         return customerRepository.save(customerToUpdate);
+    }
+
+    public CardDetails addCardDetails(CardDetails cardDetails, Long customerId) {
+        cardDetailsRepository.save(cardDetails);
+        Customer customer = customerRepository.findById(customerId)
+                .orElseThrow(() -> new ResourceNotFoundException("No customer with id : "+ customerId));
+        customer.setCardDetails(cardDetails);
+        customerRepository.save(customer);
     }
 }

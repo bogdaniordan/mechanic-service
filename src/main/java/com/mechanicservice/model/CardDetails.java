@@ -23,8 +23,6 @@ public class CardDetails {
     private String expirationMonth;
     @Column(name = "expiration_year")
     private String expirationYear;
-    @OneToOne
-    private Customer customer;
 
     public CardDetails(String cardOwner, String cardNumber, String expirationMonth, String expirationYear) {
         this.cardOwner = cardOwner;
