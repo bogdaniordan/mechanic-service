@@ -13,10 +13,7 @@ import javax.persistence.*;
 public class Car {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id")
     private Long id;
-
-    @Column(name = "brand_name")
     private String brandName;
 
     @OneToOne
@@ -38,9 +35,5 @@ public class Car {
         this.repairedstatus = repairedStatus;
         this.requiredservice = requiredServices;
         this.fuel = fuel;
-    }
-
-    public void assignMechanic(Mechanic mechanic) {
-        this.assignedMechanic = mechanic;
     }
 }

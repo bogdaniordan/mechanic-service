@@ -37,8 +37,7 @@ public class CarService {
     public Car saveCar(Car car, Long mechanicId) {
         Mechanic mechanic = mechanicRepository.findById(mechanicId)
                 .orElseThrow(() -> new ResourceNotFoundException("Unable to find mechanic with id: " + mechanicId));
-        car.assignMechanic(mechanic);
-        System.out.println(car.getAssignedMechanic().toString());
+        car.setAssignedMechanic(mechanic);
         return carRepository.save(car);
     }
 

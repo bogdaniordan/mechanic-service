@@ -8,7 +8,7 @@
     <persistence-unit name="my-persistence-unit" transaction-type="RESOURCE_LOCAL">
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
         <class>com.mechanicservice.model.Customer</class>
-        <class>com.mechanicservice.model.Service</class>
+        <class>com.mechanicservice.model.CarService</class>
         <class>com.mechanicservice.model.Mechanic</class>
         <class>com.mechanicservice.model.Car</class>
 
@@ -31,7 +31,7 @@
             <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/mechanic"/>
 
             <!--            PROVIDE CREDENTIALS FOR YOUR DATABASE-->
-            <property name="javax.persistence.jdbc.user" value="bogdan"/>
+            <property name="javax.persistence.jdbc.dbUser" value="bogdan"/>
             <property name="javax.persistence.jdbc.password" value="database"/>
         </properties>
     </persistence-unit>

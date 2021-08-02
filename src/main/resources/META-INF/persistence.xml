@@ -31,7 +31,7 @@
             <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/mechanic"/>
 
             <!--            PROVIDE CREDENTIALS FOR YOUR DATABASE-->
-            <property name="javax.persistence.jdbc.user" value="bogdan"/>
+            <property name="javax.persistence.jdbc.dbUser" value="bogdan"/>
             <property name="javax.persistence.jdbc.password" value="database"/>
         </properties>
     </persistence-unit>

@@ -1,43 +1,34 @@
 package com.mechanicservice.security;
 
 
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
-import org.springframework.security.web.authentication.WebAuthenticationDetailsSource;
-import org.springframework.stereotype.Component;
-import org.springframework.web.filter.OncePerRequestFilter;
-
-import javax.servlet.FilterChain;
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
 
 @Configuration
 @EnableWebSecurity
+@AllArgsConstructor
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
-    @Autowired
-    private JWTUserService userService;
 
-    @Autowired
-    private JwtFilter jwtFilter;
+    private final UserDetailsService customUserCredentialsService;
+    private final JwtTokenService jwtTokenService;
 
-    @Override
-    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.userDetailsService(userService);
-    }
+//    @Override
+//    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+//        auth.userDetailsService(userService);
+//    }
 
     @Override
     @Bean
@@ -53,47 +44,16 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .anyRequest().authenticated()
                 .and()
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
-        http.addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class);
+        http.addFilterBefore(new JwtTokenFilter(jwtTokenService), UsernamePasswordAuthenticationFilter.class);
     }
 
-    @Component
-    public static class JwtFilter extends OncePerRequestFilter {
+    @Bean
+    public PasswordEncoder myPasswordEncoder() {
+        return new BCryptPasswordEncoder();
+    }
 
-        @Autowired
-        private JWTUtility jwtUtility;
-
-        @Autowired
-        private JWTUserService userService;
-
-        @Override
-        protected void doFilterInternal(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, FilterChain filterChain) throws ServletException, IOException {
-            String authorization = httpServletRequest.getHeader("Authorization");
-            String token = null;
-            String userName = null;
-
-            if(null != authorization && authorization.startsWith("Bearer ")) {
-                token = authorization.substring(7);
-                userName = jwtUtility.getUsernameFromToken(token);
-            }
-
-            if(null != userName && SecurityContextHolder.getContext().getAuthentication() == null) {
-                UserDetails userDetails
-                        = userService.loadUserByUsername(userName);
-
-                if(jwtUtility.validateToken(token,userDetails)) {
-                    UsernamePasswordAuthenticationToken usernamePasswordAuthenticationToken
-                            = new UsernamePasswordAuthenticationToken(userDetails,
-                            null, userDetails.getAuthorities());
-
-                    usernamePasswordAuthenticationToken.setDetails(
-                            new WebAuthenticationDetailsSource().buildDetails(httpServletRequest)
-                    );
-
-                    SecurityContextHolder.getContext().setAuthentication(usernamePasswordAuthenticationToken);
-                }
-
-            }
-            filterChain.doFilter(httpServletRequest, httpServletResponse);
-        }
+    @Autowired
+    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+        auth.userDetailsService(customUserCredentialsService).passwordEncoder(myPasswordEncoder());
     }
 }

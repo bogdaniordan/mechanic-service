@@ -17,14 +17,14 @@ import javax.persistence.Persistence;
 public class MechanicServiceApplication {
 
 	//modify later
-	private static void initializeDatabase() {
-		EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("my-persistence-unit");
-		EntityManager entityManager = entityManagerFactory.createEntityManager();
-		DataGenerator dataGenerator = new DataGenerator(entityManager);
-		dataGenerator.populateDb();
-		entityManager.close();
-		entityManagerFactory.close();
-	}
+//	private static void initializeDatabase() {
+//		EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("my-persistence-unit");
+//		EntityManager entityManager = entityManagerFactory.createEntityManager();
+//		DataGenerator dataGenerator = new DataGenerator(entityManager);
+//		dataGenerator.populateDb();
+//		entityManager.close();
+//		entityManagerFactory.close();
+//	}
 
 	public static void main(String[] args) {
 		SpringApplication.run(MechanicServiceApplication.class, args);

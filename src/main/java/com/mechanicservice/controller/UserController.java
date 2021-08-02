@@ -1,11 +1,7 @@
 package com.mechanicservice.controller;
 
 
-import com.mechanicservice.security.JWTUtility;
-import com.mechanicservice.security.JwtRequest;
-import com.mechanicservice.security.JwtResponse;
-import com.mechanicservice.repository.UserRepository;
-import com.mechanicservice.security.JWTUserService;
+import com.mechanicservice.repository.DbUserRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -21,39 +17,39 @@ import org.springframework.web.bind.annotation.*;
 public class UserController {
 
     @Autowired
-    UserRepository userRepository;
-
-    @Autowired
-    private JWTUtility jwtUtility;
-
-    @Autowired
-    private AuthenticationManager authenticationManager;
-
-    @Autowired
-    private JWTUserService userService;
-
-
-    @PostMapping("/authenticate")
-    public JwtResponse authenticate(@RequestBody JwtRequest jwtRequest) throws Exception{
-        try {
-            authenticationManager.authenticate(
-                    new UsernamePasswordAuthenticationToken(
-                            jwtRequest.getUsername(),
-                            jwtRequest.getPassword()
-                    )
-            );
-        } catch (BadCredentialsException e) {
-            throw new Exception("INVALID_CREDENTIALS", e);
-        }
-
-        final UserDetails userDetails
-                = userService.loadUserByUsername(jwtRequest.getUsername());
-
-        final String token =
-                jwtUtility.generateToken(userDetails);
-
-        return new JwtResponse(token);
-    }
+    DbUserRepository dbUserRepository;
+//
+//    @Autowired
+//    private JWTUtility jwtUtility;
+//
+//    @Autowired
+//    private AuthenticationManager authenticationManager;
+//
+//    @Autowired
+//    private JWTUserService userService;
+//
+//
+//    @PostMapping("/authenticate")
+//    public JwtResponse authenticate(@RequestBody JwtRequest jwtRequest) throws Exception{
+//        try {
+//            authenticationManager.authenticate(
+//                    new UsernamePasswordAuthenticationToken(
+//                            jwtRequest.getUsername(),
+//                            jwtRequest.getPassword()
+//                    )
+//            );
+//        } catch (BadCredentialsException e) {
+//            throw new Exception("INVALID_CREDENTIALS", e);
+//        }
+//
+//        final UserDetails userDetails
+//                = userService.loadUserByUsername(jwtRequest.getUsername());
+//
+//        final String token =
+//                jwtUtility.generateToken(userDetails);
+//
+//        return new JwtResponse(token);
+//    }
 
 
 

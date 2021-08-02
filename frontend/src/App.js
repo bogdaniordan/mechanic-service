@@ -42,7 +42,7 @@ class App extends Component{
                             <Route path="/login" component={LoginComponent}></Route>
                             <Route path="/logout" component={LogoutComponent}></Route>
                             <Route path="/profile" component={CustomerProfileComponent}></Route>
-                            <Route path="/replace-user-car/:id" component={ReplaceUserCarComponent}></Route>
+                            <Route path="/replace-dbUser-car/:id" component={ReplaceUserCarComponent}></Route>
                             <Route path="/appointment/mechanic/:mechanicId/:carId" component={AppointmentComponent}></Route>
                             <Route path="/redirect-home-appointment" component={RedirectHomeComponent}></Route>
                             <Route path="/testimonial/:mechanicId/:requiredService/:carId" component={CreateTestimonialComponent}></Route>

@@ -2,12 +2,12 @@ package com.mechanicservice.service;
 
 import com.mechanicservice.model.Car;
 import com.mechanicservice.model.CardDetails;
-import com.mechanicservice.model.User;
+import com.mechanicservice.model.DbUser;
 import com.mechanicservice.model.Customer;
 import com.mechanicservice.repository.CarRepository;
 import com.mechanicservice.repository.CardDetailsRepository;
 import com.mechanicservice.repository.CustomerRepository;
-import com.mechanicservice.repository.UserRepository;
+import com.mechanicservice.repository.DbUserRepository;
 import org.apache.velocity.exception.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -24,7 +24,7 @@ public class CustomerService {
     private CustomerRepository customerRepository;
 
     @Autowired
-    private UserRepository userRepository;
+    private DbUserRepository dbUserRepository;
 
     @Autowired
     private CardDetailsRepository cardDetailsRepository;
@@ -49,12 +49,12 @@ public class CustomerService {
         return customerRepository.save(customer);
     }
 
-    public List<User> getAllCredentials() {
-        return userRepository.findAll();
+    public List<DbUser> getAllCredentials() {
+        return dbUserRepository.findAll();
     }
 
-    public User addCredentials(User user) {
-        return this.userRepository.save(user);
+    public DbUser addCredentials(DbUser dbUser) {
+        return this.dbUserRepository.save(dbUser);
     }
 
     public Customer customerByUserId(Long id) {
@@ -63,10 +63,10 @@ public class CustomerService {
     }
 
     public Customer customerByUsername(String username) {
-        User user = userRepository.findByUsername(username)
+        DbUser dbUser = dbUserRepository.findByUsername(username)
                 .orElseThrow(() -> new ResourceNotFoundException("Could not find user"));
-        return customerRepository.findCustomerByUserId(user.getId())
-                .orElseThrow(() -> new ResourceNotFoundException("Could not find customer with customer id: " + user.getId()));
+        return customerRepository.findCustomerByUserId(dbUser.getId())
+                .orElseThrow(() -> new ResourceNotFoundException("Could not find customer with customer id: " + dbUser.getId()));
     }
 
     public Customer updateCustomer(Customer customer, Long customerId) {

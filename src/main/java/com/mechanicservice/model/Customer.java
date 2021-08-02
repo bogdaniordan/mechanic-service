@@ -13,14 +13,13 @@ import javax.persistence.*;
 public class Customer {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id")
     private Long id;
     private String name;
     @OneToOne
     @JoinColumn(name = "ownedcar_id")
     private Car ownedCar;
     @OneToOne
-    private User user;
+    private DbUser dbUser;
     private String email;
     private String phoneNumber;
     private String street;

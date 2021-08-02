@@ -42,7 +42,7 @@ class CustomerProfileComponent extends Component {
                 console.log(r.data.ownedCar.name)
                 this.setState({id: AuthService.getCurrentCustomer().id})
                 this.setState({phoneNumber: r.data.phoneNumber})
-                this.setState({username: r.data.user.username})
+                this.setState({username: r.data.dbUser.username})
                 this.setState({address: r.data.street})
                 this.setState({city: r.data.city})
                 this.setState({car: r.data.ownedCar})
@@ -74,11 +74,11 @@ class CustomerProfileComponent extends Component {
     }
 
     // assignCarToMechanic() {
-    //     // get user's (customer's) car and assign it to a mechanic - mechanic selected from a dropdown list
+    //     // get dbUser's (customer's) car and assign it to a mechanic - mechanic selected from a dropdown list
     // }
 
     replaceCar() {
-        this.props.history.push(`/replace-user-car/${this.state.id}`)
+        this.props.history.push(`/replace-dbUser-car/${this.state.id}`)
     }
 
     render() {
@@ -96,13 +96,13 @@ class CustomerProfileComponent extends Component {
                             <div className="card h-100">
                                 <div className="card-body">
                                     <div className="account-settings">
-                                        <div className="user-profile">
-                                            <div className="user-avatar">
+                                        <div className="dbUser-profile">
+                                            <div className="dbUser-avatar">
                                                 <img width="250px" height="350px" src={this.state.picture}
                                                      alt="Maxwell Admin"/>
                                             </div>
-                                            <h5 className="user-name">{this.state.name}</h5>
-                                            <h6 className="user-email">Username: {this.state.username}</h6>
+                                            <h5 className="dbUser-name">{this.state.name}</h5>
+                                            <h6 className="dbUser-email">Username: {this.state.username}</h6>
                                         </div>
                                     </div>
                                 </div>

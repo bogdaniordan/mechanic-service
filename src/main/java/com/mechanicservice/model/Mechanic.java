@@ -16,10 +16,7 @@ import java.util.List;
 public class Mechanic {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id")
     private Long id;
-
-    @Column(name = "name")
     private String name;
 
     @Enumerated(EnumType.STRING)
@@ -28,21 +25,15 @@ public class Mechanic {
     @Column(name = "picture")
     private String picture;
 
-//    @OneToMany
-//    private List<Car> assignedCars;
-
+    @OneToMany
+    private List<Car> cars;
 
     public Mechanic(String name, ServiceType serviceType) {
         this.name = name;
         this.specialization = serviceType;
-//        this.assignedCars = new ArrayList<>();
     }
 
     public void addPicture(String picture) {
         this.picture = picture;
     }
-
-//    public void assignCar(Car car) {
-//        assignedCars.add(car);
-//    }
 }
