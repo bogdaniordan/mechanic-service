@@ -28,7 +28,7 @@ public class MechanicServiceApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(MechanicServiceApplication.class, args);
-		initializeDatabase();
+//		initializeDatabase();
 	}
 
 

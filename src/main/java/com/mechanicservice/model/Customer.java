@@ -15,30 +15,16 @@ public class Customer {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
     private Long id;
-
-    @Column(name = "name")
     private String name;
-
     @OneToOne
     @JoinColumn(name = "ownedcar_id")
     private Car ownedCar;
-
     @OneToOne
     private User user;
-
-    @Column(name = "email")
     private String email;
-
-    @Column(name = "phonenumber")
     private String phoneNumber;
-
-    @Column(name = "street")
     private String street;
-
-    @Column(name = "city")
     private String city;
-
-    @Column(name = "picture")
     private String picture;
 
     @OneToOne
@@ -51,13 +37,5 @@ public class Customer {
         this.street = street;
         this.city = city;
         this.picture = picture;
-    }
-
-    public void assignCar(Car ownedCar) {
-        this.ownedCar = ownedCar;
-    }
-
-    public void assignCredentials(User user) {
-        this.user = user;
     }
 }

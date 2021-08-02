@@ -46,7 +46,7 @@ class App extends Component{
                             <Route path="/appointment/mechanic/:mechanicId/:carId" component={AppointmentComponent}></Route>
                             <Route path="/redirect-home-appointment" component={RedirectHomeComponent}></Route>
                             <Route path="/testimonial/:mechanicId/:requiredService/:carId" component={CreateTestimonialComponent}></Route>
-                            <Route path="/services" component={AllServicesComponent}></Route>
+                            <Route path="/carServices" component={AllServicesComponent}></Route>
                             <Route path="/payment/:customerId" component={CardDetailsComponent}></Route>
                             <Route path="/update-customer-details/:customerId" component={UpdateCustomerComponent}></Route>
                         </Switch>

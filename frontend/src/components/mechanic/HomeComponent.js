@@ -89,7 +89,7 @@ class HomeComponent extends Component {
                         <Nav className="me-auto">
                             <Nav.Link href="/add-mechanic">Add mechanic</Nav.Link>
                             {AuthService.getCurrentCustomer() ?  <Nav.Link href="/logout">Logout</Nav.Link> :  <Nav.Link href="/login">Log in</Nav.Link>}
-                            <Nav.Link href="/services">Services</Nav.Link>
+                            <Nav.Link href="/carServices">Services</Nav.Link>
                         </Nav>
                         {AuthService.getCurrentUser() ? <Navbar.Text>Signed in as: <a href="#">{AuthService.getCurrentCustomer().name}</a></Navbar.Text> : ""}
                     </Container>

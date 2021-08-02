@@ -1,14 +1,13 @@
-package com.mechanicservice.restcontroller;
+package com.mechanicservice.controller;
 
 
-import com.mechanicservice.jwt.JWTUtility;
-import com.mechanicservice.jwt.JwtRequest;
-import com.mechanicservice.jwt.JwtResponse;
+import com.mechanicservice.security.JWTUtility;
+import com.mechanicservice.security.JwtRequest;
+import com.mechanicservice.security.JwtResponse;
 import com.mechanicservice.repository.UserRepository;
-import com.mechanicservice.service.JWTUserService;
+import com.mechanicservice.security.JWTUserService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;

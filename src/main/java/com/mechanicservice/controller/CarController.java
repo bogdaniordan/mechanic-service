@@ -1,4 +1,4 @@
-package com.mechanicservice.restcontroller;
+package com.mechanicservice.controller;
 
 
 import com.mechanicservice.model.Car;

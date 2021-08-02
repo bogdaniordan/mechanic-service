@@ -1,22 +1,25 @@
 package com.mechanicservice.data;
 
 import com.mechanicservice.model.*;
+import com.mechanicservice.repository.*;
+import lombok.AllArgsConstructor;
+import org.springframework.boot.CommandLineRunner;
+import org.springframework.stereotype.Component;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityTransaction;
 import java.util.Date;
 
-public class DataGenerator {
+@Component
+@AllArgsConstructor
+public class Runner implements CommandLineRunner {
+    private final CarRepository carRepository;
+    private final CustomerRepository customerRepository;
+    private final MechanicRepository mechanicRepository;
+    private final ServiceRepository serviceRepository;
+    private final TestimonialRepository testimonialRepository;
+    private final UserRepository userRepository;
 
-    private final EntityManager entityManager;
-
-    public DataGenerator(EntityManager entityManager) {
-        this.entityManager = entityManager;
-    }
-
-    public void populateDb() {
-        EntityTransaction transaction = entityManager.getTransaction();
-        transaction.begin();
+    @Override
+    public void run(String... args) throws Exception {
         Mechanic mechanic =  new Mechanic("Nea Marin", ServiceType.ENGINE_REPAIR);
         Mechanic mechanic1 =  new Mechanic("Nea Bebe", ServiceType.ENGINE_REPAIR);
         Mechanic mechanic2 =  new Mechanic("Nea Mircea", ServiceType.OIL_CHANGE);
@@ -46,21 +49,24 @@ public class DataGenerator {
         testimonial.setCustomer(customer);
         testimonial.setMechanic(mechanic3);
 
-        entityManager.persist(testimonial1);
-        entityManager.persist(testimonial);
-        entityManager.persist(user);
-        entityManager.persist(otherUser);
-        entityManager.persist(mechanic);
-        entityManager.persist(car);
-        entityManager.persist(customer);
-        entityManager.persist(otherCustomer);
-        entityManager.persist(carService);
-        entityManager.persist(mechanic1);
-        entityManager.persist(mechanic2);
-        entityManager.persist(mechanic3);
 
-        transaction.commit();
+
+        userRepository.save(user);
+        userRepository.save(otherUser);
+        mechanicRepository.save(mechanic);
+        mechanicRepository.save(mechanic1);
+        mechanicRepository.save(mechanic2);
+        mechanicRepository.save(mechanic3);
+
+        carRepository.save(car);
+        customerRepository.save(customer);
+        customerRepository.save(otherCustomer);
+        serviceRepository.save(carService);
+
+        testimonialRepository.save(testimonial1);
+        testimonialRepository.save(testimonial);
+
+
+
     }
-
-
 }

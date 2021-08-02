@@ -11,7 +11,7 @@ import java.util.Date;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Service {
+public class CarService {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
@@ -33,7 +33,7 @@ public class Service {
     private Date date;
 
 
-    public Service(ServiceType serviceType, Date date) {
+    public CarService(ServiceType serviceType, Date date) {
         this.servicetype = serviceType;
 //        this.car = car;
 //        this.customer = customer;

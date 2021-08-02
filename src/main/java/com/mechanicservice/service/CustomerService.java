@@ -41,7 +41,7 @@ public class CustomerService {
     public Customer saveCustomer(Customer customer, Long carId) {
         Car car = carRepository.findById(carId)
                 .orElseThrow(() -> new ResourceNotFoundException("Unable to find car with id: " + carId));
-        customer.assignCar(car);
+        customer.setOwnedCar(car);
         return customerRepository.save(customer);
     }
 
@@ -86,5 +86,6 @@ public class CustomerService {
                 .orElseThrow(() -> new ResourceNotFoundException("No customer with id : "+ customerId));
         customer.setCardDetails(cardDetails);
         customerRepository.save(customer);
+        return cardDetails;
     }
 }

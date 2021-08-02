@@ -44,7 +44,6 @@ public class TestimonialService {
         testimonial.setMechanic(mechanic);
         testimonial.setCustomer(customer);
         testimonial.setCar(car);
-        testimonialRepository.save(testimonial);
-        return testimonial;
+        return testimonialRepository.save(testimonial);
     }
 }

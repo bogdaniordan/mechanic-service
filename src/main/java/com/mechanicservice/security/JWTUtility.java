@@ -1,4 +1,4 @@
-package com.mechanicservice.jwt;
+package com.mechanicservice.security;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;

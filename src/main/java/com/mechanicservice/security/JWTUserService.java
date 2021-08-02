@@ -1,4 +1,4 @@
-package com.mechanicservice.service;
+package com.mechanicservice.security;
 
 
 import com.mechanicservice.repository.UserRepository;

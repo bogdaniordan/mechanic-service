@@ -1,9 +1,6 @@
-package com.mechanicservice.restcontroller;
+package com.mechanicservice.controller;
 
-import com.mechanicservice.model.Car;
-import com.mechanicservice.model.Customer;
 import com.mechanicservice.model.Mechanic;
-import com.mechanicservice.repository.MechanicRepository;
 import com.mechanicservice.service.MechanicService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
